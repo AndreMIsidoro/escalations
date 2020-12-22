@@ -4,3 +4,8 @@
 
 nmap
 searchsplot
+
+
+## Execute Exploits
+
+metasploit
