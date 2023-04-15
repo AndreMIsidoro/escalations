@@ -1,7 +1,7 @@
 ## Scan ports
 	
 	sudo nmap -p- -T4 -A 10.10.10.209 > nmap.output
-	nmap -p- --min-rate=1000 -sV <target_ip> > namp.output
+	nmap -p- --min-rate=1000 -sV <target_ip> > nmap.output
 
 ## Curl Target **
 
