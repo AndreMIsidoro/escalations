@@ -2,6 +2,10 @@
 
 ### Use Wappalyzer to get more information from the web server
 
+## Use the zap scanner
+
+	Use the zap spider scanner and then the active spider scanner to look for vulnerabilities
+
 ### Use gobuster to brute force hidden pages
 
 	https://github.com/Andre92Marcos/tools/tree/master/gobuster
@@ -25,3 +29,4 @@
 ### Check the list of possible vulnerabilities for web servers
 
 	https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers
+

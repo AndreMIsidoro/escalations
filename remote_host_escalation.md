@@ -11,6 +11,3 @@
 
 	Use https://www.speedguide.net/port.php?port=5985 to check the ports default service
 
-## Use the zap scanner
-
-	Use the zap spider scanner and then the active spider scanner to look for vulnerabilities
