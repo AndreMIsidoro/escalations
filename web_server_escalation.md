@@ -4,7 +4,7 @@
 
 ## Use the zap scanner
 
-	Use the zap spider scanner and then the active spider scanner to look for vulnerabilities
+Use the zap scanner to look for vulnerabilities
 
 ### Use gobuster to brute force hidden pages
 
