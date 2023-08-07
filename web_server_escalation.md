@@ -14,7 +14,7 @@ Use the zap scanner to look for vulnerabilities
 
 	Use -x to search for specific pages like .html and pages for the specific programming language (like .php)
 
-### Try default login
+### Try default login of the running service
 
 	admin:admin
 	guest:guest
