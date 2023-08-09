@@ -22,6 +22,8 @@ Use the zap scanner to look for vulnerabilities
 	root:root
 	administrator:password
 
+### Check cookies to see if we can manipulate them
+
 ### Try some SQL Injection
 
 	https://github.com/Andre92Marcos/sql_db/tree/master/sqlinjection
