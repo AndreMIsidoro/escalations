@@ -25,14 +25,21 @@
 
 	cat /etc/passwd - check existing users
 	cat /etc/group - check existing groups
+	cat /etch/hosts
 	getnet group <group_name> - check which members belong to an exinsting group
+	lastlog - check the last logins in the system
+	w - check the current login users
 
-## Enumerate the home directory
+## Enumerate the home directory and history files
 
 Check if the users are stoing significant information and configurations
 
 	cat ./bash_history - Get the commands that have been executed by the user
+	history - Get the commands that have been executed by the user (same as cat ./bash_history?)
 	Check .ssh keys
+	find / -type f \( -name *_hist -o -name *_history \) -exec ls -l {} \; 2>/dev/null - find history files that may have been created by services or scripts
+	ls -la /etc/cron.daily/ - check the schedule jobs
+	find /proc -name cmdline -exec cat {} \; 2>/dev/null | tr " " "\n" - find proc files that can give more information about the system
 
 ## Get all Hidden Files, Directories and temp files
 
@@ -40,7 +47,25 @@ Check if the users are stoing significant information and configurations
 	find / -type d -name ".*" -ls 2>/dev/null
 	ls -l /tmp /var/tmp /dev/shm
 
+## Services
+
+Check which services are in the system. They may be vulnurable to some exploit
+
+	apt list --installed | tr "/" " " | cut -d" " -f1,3 | sed 's/[0-9]://g' | tee -a installed_pkgs.list - check packages installed
+	sudo -V - check sudo version, old versions may have exploits
+	for i in $(curl -s https://gtfobins.github.io/ | html2text | cut -d" " -f1 | sed '/^[[:space:]]*$/d');do if grep -q "$i" installed_pkgs.list;then echo "Check GTFO for: $i";fi;done - check which binaries in the system maybe exploited
+	find / -type f \( -name *.conf -o -name *.config \) -exec ls -l {} \; 2>/dev/null - check config files for password, etc
+	find / -type f -name "*.sh" 2>/dev/null | grep -v "src\|snap\|share" - scripts may have wrong priveledges, and may have other valuable information
+	ps aux | grep root - check which services are beeing run by root
+
+
 
 ## Run linPEAS script
 
 	https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
+
+
+## Relevante Information
+
+	https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
+	https://gtfobins.github.io/
