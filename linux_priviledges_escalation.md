@@ -36,7 +36,6 @@ Check if the users are stoing significant information and configurations
 
 	cat ./bash_history - Get the commands that have been executed by the user
 	history - Get the commands that have been executed by the user (same as cat ./bash_history?)
-	Check .ssh keys
 	find / -type f \( -name *_hist -o -name *_history \) -exec ls -l {} \; 2>/dev/null - find history files that may have been created by services or scripts
 	ls -la /etc/cron.daily/ - check the schedule jobs
 	find /proc -name cmdline -exec cat {} \; 2>/dev/null | tr " " "\n" - find proc files that can give more information about the system
@@ -58,7 +57,15 @@ Check which services are in the system. They may be vulnurable to some exploit
 	find / -type f -name "*.sh" 2>/dev/null | grep -v "src\|snap\|share" - scripts may have wrong priveledges, and may have other valuable information
 	ps aux | grep root - check which services are beeing run by root
 
+## Credential Hunting
 
+When enumerating a system, it is important to note down any credentials. These may be found in configuration files (.conf, .config, .xml, etc.), shell scripts, a user's bash history file, backup (.bak) files, within database files or even in text files.
+
+The /var directory typically contains the web root for whatever web server is running on the host. The web root may contain database credentials or other types of credentials that can be leveraged to further access.
+
+Check .ssh keys, and ssh known_hosts
+
+	ls ~/.ssh
 
 ## Run linPEAS script
 
