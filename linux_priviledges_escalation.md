@@ -67,6 +67,16 @@ Check .ssh keys, and ssh known_hosts
 
 	ls ~/.ssh
 
+## Check priveledges
+
+Check files that have setuid for root
+
+	find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
+
+Check for files for the setgroupid
+
+	find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
+
 ## Run linPEAS script
 
 	https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
