@@ -80,7 +80,8 @@ Check for files for the setgroupid
 ## Run linPEAS script
 
 	https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
-
+	
+	./linpeas.sh
 
 ## Relevante Information
 
