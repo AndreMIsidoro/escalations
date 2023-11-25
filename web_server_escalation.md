@@ -27,6 +27,8 @@ Use the zap scanner to look for vulnerabilities
 	root:root
 	administrator:password
 
+	we can also try to do some brute force with common user passoword combinations
+
 ### Check cookies to see if we can manipulate them
 
 ### Try some SQL Injection
