@@ -6,6 +6,11 @@
 
 Use the zap scanner to look for vulnerabilities
 
+## If we have the web server version, search for exploits
+
+	https://www.cvedetails.com/
+	https://www.exploit-db.com/
+
 ### Use gobuster to brute force hidden pages
 
 	https://github.com/Andre92Marcos/tools/tree/master/gobuster
