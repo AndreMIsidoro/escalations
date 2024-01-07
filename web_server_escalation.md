@@ -16,7 +16,7 @@ Use the zap scanner to look for vulnerabilities
 	https://github.com/Andre92Marcos/tools/tree/master/gobuster
 
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Conten/directory-list-2.3-small.txt
-	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/dirb/big.txt
+	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt
 
 	Use -x to search for specific pages like .html and pages for the specific programming language (like .php)
 
