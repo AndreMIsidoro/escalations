@@ -10,6 +10,10 @@ Run strings command on the executable
 
 	strings <executable>
 
+	Also try to find encoded strings
+
+	strings -e b <filename>
+
 ## 2 - Look at the executable code
 
 Using ghidra:
