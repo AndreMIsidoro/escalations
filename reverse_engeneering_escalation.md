@@ -18,4 +18,4 @@ Run strings command on the executable
 
 Using ghidra:
 
-	https://github.com/Andre92Marcos/reverse_engineering-binary_exploitation/tree/master/ghidra
+	https://github.com/Andre92Marcos/tools/tree/master/ghidra
