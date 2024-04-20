@@ -15,5 +15,5 @@
 
 	Use https://www.speedguide.net/port.php?port=5985 to check the ports default service
 
-## If we get versions of the services search for them in google for exploits
+## If we get versions of the services search for them in google for exploits and metasploit
 
