@@ -18,7 +18,7 @@ Use the zap scanner to look for vulnerabilities
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Conten/directory-list-2.3-small.txt
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt
 
-	gobuster  dns -d <hostname> /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -t 20
+	gobuster  dns -d <hostname> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -t 23
 
 
 ### Try default login of the running service
