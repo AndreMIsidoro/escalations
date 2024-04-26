@@ -11,14 +11,15 @@ Use the zap scanner to look for vulnerabilities
 	https://www.cvedetails.com/
 	https://www.exploit-db.com/
 
-### Use gobuster to brute force hidden pages
+### Use gobuster to brute force hidden pages and sub dommains
 
 	https://github.com/Andre92Marcos/tools/tree/master/gobuster
 
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Conten/directory-list-2.3-small.txt
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt
 
-	Use -x to search for specific pages like .html and pages for the specific programming language (like .php)
+	gobuster  dns -d <hostname> /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -t 20
+
 
 ### Try default login of the running service
 
