@@ -20,6 +20,14 @@ Use the zap scanner to look for vulnerabilities
 
 	gobuster  dns -d <hostname> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -t 23
 
+### Check common files
+
+Check
+
+	robot.txt
+	README.txt
+
+
 
 ### Try default login of the running service
 
