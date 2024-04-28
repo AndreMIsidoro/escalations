@@ -42,11 +42,11 @@ Check
 
 ### Check cookies to see if we can manipulate them
 
-### Try some SQL Injection
-
-	https://github.com/Andre92Marcos/sql_db/tree/master/sqlinjection
 
 ### Check the list of possible vulnerabilities for web servers
 
 	https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers
-
+	For any input field try some:
+		SQLInjection
+		some xss - cross site scritting
+		some ssi - server side injection
