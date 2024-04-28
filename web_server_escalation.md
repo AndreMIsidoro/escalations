@@ -15,10 +15,11 @@ Use the zap scanner to look for vulnerabilities
 
 	https://github.com/Andre92Marcos/tools/tree/master/gobuster
 
-	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Conten/directory-list-2.3-small.txt
-	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt
+	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt -t 20
+	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -t 20
+	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt -t 20
 
-	gobuster  dns -d <hostname> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -t 23
+	gobuster  dns -d <hostname> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -t 20
 
 ### Check common files
 
