@@ -63,6 +63,7 @@ Check which services are in the system. They may be vulnurable to some exploit
 When enumerating a system, it is important to note down any credentials. These may be found in configuration files (.conf, .config, .xml, etc.), shell scripts, a user's bash history file, backup (.bak) files, within database files or even in text files.
 
 The /var directory typically contains the web root for whatever web server is running on the host. The web root may contain database credentials or other types of credentials that can be leveraged to further access.
+Look for dabases runnings and grep the stored files (possibly also doing a strings command), to try to find the hashed passwords
 
 Check .ssh keys, and ssh known_hosts
 
