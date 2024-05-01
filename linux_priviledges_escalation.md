@@ -65,6 +65,9 @@ When enumerating a system, it is important to note down any credentials. These m
 The /var directory typically contains the web root for whatever web server is running on the host. The web root may contain database credentials or other types of credentials that can be leveraged to further access.
 Look for dabases runnings and grep the stored files (possibly also doing a strings command), to try to find the hashed passwords
 
+grep -ri 'password'
+grep -ri 'admin'
+
 Check .ssh keys, and ssh known_hosts
 
 	ls ~/.ssh
