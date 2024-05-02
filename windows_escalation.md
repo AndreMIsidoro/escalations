@@ -20,7 +20,7 @@
 	net user		Print all users
 	net localgroup		Print all groups
 	net localgroup <groupname>		Prints information of group
-	tasklist /svc		Gives a better idea of what applications are running on the system
+	tasklist /svc		Gives a better idea of what applications are running on the system. Prints the name of executables and services running
 		https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist
 
 	set		Prints env variables including PATH
@@ -43,6 +43,15 @@
 	netstat -ano		Display active tcp and udp connections
 	query user		Display active users
 	net accounts		Prints password policy
+
+## Check communication through processess using pipes
+
+	pipelist.exe /accepteula		enumerate instances of named pipes
+		https://docs.microsoft.com/en-us/sysinternals/downloads/pipelist
+	Get-ChildItem \\.\pipe\		enumerate instances of named pipes with powershell
+	accesschk.exe /accepteula \\.\Pipe\<name_of_pipe> -v		Enumerate permissions of pipe. We are looking for a pipe we have WRITE permissions for our user
+		https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk
+	accesschk.exe -w \pipe\* -v		Enumerates all pipes that have WRITE permission
 
 
 ## Try WinPeas

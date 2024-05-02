@@ -41,6 +41,8 @@ Check if the users are stoing significant information and configurations
 	ls -la /etc/cron.daily/ - check the schedule jobs
 	find /proc -name cmdline -exec cat {} \; 2>/dev/null | tr " " "\n" - find proc files that can give more information about the system
 
+	Also do a quick check in any weird file in the home directory
+
 ## Get all Hidden Files, Directories and temp files
 
 	find / -type f -name ".*" -exec ls -l {} \; 2>/dev/null
