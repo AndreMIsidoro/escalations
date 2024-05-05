@@ -125,6 +125,7 @@ Commands susceptible to this are:
 	zip
 
 https://book.hacktricks.xyz/linux-hardening/privilege-escalation/wildcards-spare-tricks
+
 https://www.exploit-db.com/papers/33930
 
 ## Run linPEAS script
