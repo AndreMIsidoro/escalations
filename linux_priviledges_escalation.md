@@ -4,6 +4,7 @@
 
 	whoami - what user are we running as
 	id - what group does our user belong to
+		if we are in the lxd we might create a container to get root, same for docker group
 	hostname - what is the server named. can we gather any info from the naming convention
 	ifconfig of ip a - what subnet did we land in, does the host have additional NICs in other subnets
 	sudo -l - can our user run anything with sudo (as another user as root) without needing a password? This can sometimes be the easiest win and we can do something like sudo su and drop right into a root shell.
@@ -84,6 +85,10 @@ Check for files for the setgroupid
 
 	find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
 
+We might be able to use gtfobins if one of these commands are allowed to run as root
+
+https://gtfobins.github.io/
+
 ## Check PATH abuse
 
 If some script is running with sudo and we can change the PATH var, then we can use it to run commands as sudo, for example:
@@ -134,6 +139,12 @@ https://www.exploit-db.com/papers/33930
 	echo $0		returns the current shell
 
 If it is a restricted shell we might need to escape
+
+## Enumerate Capabilities
+
+	find /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin -type f -exec getcap {} \;
+
+Some capabilites set to a process my allow to escalate to root
 
 ## Run linPEAS script
 
