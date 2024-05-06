@@ -128,6 +128,13 @@ https://book.hacktricks.xyz/linux-hardening/privilege-escalation/wildcards-spare
 
 https://www.exploit-db.com/papers/33930
 
+## Check if we are in a restricted shell
+
+	echo $SHELL		returns the default shell
+	echo $0		returns the current shell
+
+If it is a restricted shell we might need to escape
+
 ## Run linPEAS script
 
 	https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
