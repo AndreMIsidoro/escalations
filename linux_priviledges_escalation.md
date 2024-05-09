@@ -18,6 +18,7 @@
 	echo $PATH - check what commands can and are been runned
 	env - check any env variable for sensitive information
 	uname -a - Get kernel version. Maybe it is a vulnerable kernel
+	cat /etc/lsb-release - Get kernel version. Maybe it is a vulnerable kernel. Search google for exploit for the kernel
 	lscpu - Get information about the host architecture and cpu
 	/etc/shells - Get what shells exist on the server. The shell the user is using might be vulnurable
 	lsblk - Get information on blocks and devices on the system. An unmounted drive my contain senstive information
