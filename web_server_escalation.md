@@ -50,5 +50,5 @@ Check
 	https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers
 	For any input field try some:
 		SQLInjection
-		some xss - cross site scritting
+		some xss - cross site scritting - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/xss_cross_site_scripting
 		some ssi - server side injection
