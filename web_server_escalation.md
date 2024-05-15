@@ -38,6 +38,8 @@ Check
 	root:root
 	administrator:password
 
+	Try to search the default credentions for the webserver or webhost being used
+
 	we can also try to do some brute force with common user passoword combinations
 
 ### Check cookies to see if we can manipulate them
