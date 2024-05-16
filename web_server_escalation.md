@@ -1,6 +1,6 @@
 # Web Server Escalation
 
-### Use Wappalyzer to get more information from the web server
+## Use Wappalyzer to get more information from the web server
 
 ## Use the zap scanner
 
