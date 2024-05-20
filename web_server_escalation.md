@@ -11,7 +11,12 @@ Use the zap scanner to look for vulnerabilities
 	https://www.cvedetails.com/
 	https://www.exploit-db.com/
 
-### Use gobuster to brute force hidden pages and sub dommains
+## Scan for subdomains
+
+	Using knockpy
+	Using dnsrecon
+
+### Use gobuster to brute force hidden pages
 
 	https://github.com/Andre92Marcos/tools/tree/master/gobuster
 
