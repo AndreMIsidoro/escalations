@@ -15,6 +15,10 @@ Use the zap scanner to look for vulnerabilities
 
 	Using knockpy
 	Using dnsrecon
+	Using ffuzz
+		ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -u http://<domain> -H "Host: FUZZ.<domain>"
+		if there are many false positives we can filter them out by number of words
+		ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -u http://<domain> -H "Host: FUZZ.<domain>" -fw <number_words_false_positives>
 
 ### Use gobuster to brute force hidden pages
 
@@ -23,8 +27,6 @@ Use the zap scanner to look for vulnerabilities
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt -t 20
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -t 20
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt -t 20
-
-	gobuster  dns -d <hostname> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -t 20
 
 ### Check common files
 
