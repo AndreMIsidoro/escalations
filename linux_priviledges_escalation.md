@@ -30,7 +30,7 @@
 
 	cat /etc/passwd - check existing users
 	cat /etc/group - check existing groups
-	cat /etch/hosts
+	cat /etc/hosts
 	getnet group <group_name> - check which members belong to an exinsting group
 	lastlog - check the last logins in the system
 	w - check the current login users
@@ -63,6 +63,7 @@ Check which services are in the system. They may be vulnurable to some exploit
 	find / -type f \( -name *.conf -o -name *.config \) -exec ls -l {} \; 2>/dev/null - check config files for password, etc
 	find / -type f -name "*.sh" 2>/dev/null | grep -v "src\|snap\|share" - scripts may have wrong priveledges, and may have other valuable information
 	ps aux | grep root - check which services are beeing run by root
+	netstat -lantp - check open ports
 
 ## Credential Hunting
 
