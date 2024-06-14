@@ -7,6 +7,7 @@
 		if we are in the lxd we might create a container to get root
 		if we are in docker group we can do:
 			docker run run -v /:/mnt --rm -it ubuntu chroot /mnt bash to mount the root filesystem and escalate
+		find / -group <group_name> 2>/dev/null	finds files that belong to a specific group
 	hostname - what is the server named. can we gather any info from the naming convention
 	ifconfig of ip a - what subnet did we land in, does the host have additional NICs in other subnets
 	sudo -l - can our user run anything with sudo (as another user as root) without needing a password? This can sometimes be the easiest win and we can do something like sudo su and drop right into a root shell.
