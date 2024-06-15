@@ -4,12 +4,12 @@
 
 ## Run nmap scripts on open ports **
 
-	sudo nmap -p <open_ports> -sC -sV <target_ip>
+	sudo nmap -p <open_ports> -sC -sV -O <target_ip>
 
 	or we can do
 
 	ports=$(nmap -p- --min-rate=1000 <target_ip> | grep ^[0-9] | cut -d '/'​ -f 1 | tr ​'\n'​ ​','​ | sed s/,$//)
-	nmap -sC -sV -p​$ports​ <target_ip>
+	nmap -sC -sV -O -p​$ports​ <target_ip>
 
 ## Check the ports meaning
 
