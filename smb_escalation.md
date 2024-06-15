@@ -14,6 +14,7 @@ In msfconsole
 ## Enumeration using netexec
 
 enum4linux -a <target_ip>
+
 nmap -v -p 445,139 <or_other_smb_ports> --script=smb* <target_ip>
 
 https://www.netexec.wiki/smb-protocol/enumeration
