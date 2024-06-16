@@ -19,6 +19,15 @@ nmap -v -p 445,139 <or_other_smb_ports> --script=smb* <target_ip>
 
 https://www.netexec.wiki/smb-protocol/enumeration
 
+## Enumeration using smbmap:
+
+smbmap -H <target_ip> --no-banner
+
+Show he contentes of a share
+
+	smbmap -H <target_ip> --no-banner -r <sharename>
+
+
 
 ## Use netexec to find valid usernames and passwords
 
@@ -27,6 +36,12 @@ https://www.netexec.wiki/smb-protocol/enumeration
 use the --rid-brute option to possibly reveal other user names
 
 	netexec smb heist.htb -u usernames.txt -p passwords.txt --rid-brute
+
+## Cookbook
+
+Download multiple files
+
+	smbget -R smb://fileserver/directory
 
 ## More Information
 
