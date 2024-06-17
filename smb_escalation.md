@@ -11,11 +11,15 @@ In msfconsole
 	set RHOSTS <target_ip>
 	run
 
+## Use nmap
+
+	nmap -v -p 445,139 <or_other_smb_ports> --script=smb* <target_ip>
+
 ## Enumeration using netexec
 
-enum4linux -a <target_ip>
+netexec smb <target_ip> -u '' -p '' --shares
+netexec smb <target_ip> -u '' -p '' --pass-pol
 
-nmap -v -p 445,139 <or_other_smb_ports> --script=smb* <target_ip>
 
 https://www.netexec.wiki/smb-protocol/enumeration
 
