@@ -47,6 +47,23 @@ Download multiple files
 
 	smbget -R smb://fileserver/directory
 
+Mount a smb share:
+
+	Install the cifs utils if not installed already
+	sudo apt install cifs
+
+	Create the dir the mount will be on:
+	sudo mkdir /mnt/<dir_for_share>
+
+	Finally mount the share:
+
+	sudo mount -t cifs //hostname/sharename /mnt/dir_for_share/
+	sudo mount -t cifs //nest.htb/Users /mnt/users/
+
+	With username and pass:
+
+	sudo mount -t cifs //nest.htb/Secure$ /mnt/secure -o username=TempUser,password=welcome2019
+
 ## More Information
 
 https://book.hacktricks.xyz/network-services-pentesting/pentesting-smb#smb
