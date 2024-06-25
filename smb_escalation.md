@@ -41,6 +41,25 @@ use the --rid-brute option to possibly reveal other user names
 
 	netexec smb heist.htb -u usernames.txt -p passwords.txt --rid-brute
 
+## If you find an empty file in the share we can look for some hidden data:
+
+Connect with smbclient
+Then do:
+
+	allinfo <name_of_file_that is empty>
+
+And check if there are other streams, for example:
+
+	stream: [::$DATA], 0 bytes
+	stream: [:Password:$DATA], 15 bytes
+
+Here the default data stream has 0 bytes, but the Password stream has 15 bytes.
+We can download this data stream by doing:
+
+	get <nameofile>:Password
+
+
+
 ## Cookbook
 
 Download multiple files
