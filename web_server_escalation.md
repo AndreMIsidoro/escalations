@@ -54,8 +54,11 @@ Check
 
 ### Check the list of possible vulnerabilities for web servers
 
+	Read the vulns to keep getting better at them
+
 	https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers
 	For any input field try some:
 		SQLInjection
 		some xss - cross site scritting - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/xss_cross_site_scripting
 		some ssi - server side injection
+		some ssfr - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/ssrf
