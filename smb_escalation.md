@@ -58,6 +58,9 @@ We can download this data stream by doing:
 
 	get <nameofile>:Password
 
+## When we find valid credentials we can try rid brute to find other usernames
+
+	netexec smb $targetip -u $username -p $password --rid-brute
 
 
 ## Cookbook
