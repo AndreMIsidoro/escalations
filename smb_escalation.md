@@ -18,6 +18,7 @@ In msfconsole
 ## Enumeration using netexec
 
 netexec smb <target_ip> -u '' -p '' --shares
+
 netexec smb <target_ip> -u '' -p '' --pass-pol
 
 
@@ -35,7 +36,7 @@ Show he contentes of a share
 
 ## Use netexec to find valid usernames and passwords
 
-	netexec smb heist.htb -u usernames.txt -p passwords.txt
+	netexec smb heist.htb -u usernames.txt -p passwords.txt --continue-on-success
 
 use the --rid-brute option to possibly reveal other user names
 
