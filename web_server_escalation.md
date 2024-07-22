@@ -57,8 +57,15 @@ Check
 	Read the vulns to keep getting better at them
 
 	https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers
+
+	Try some file inclusions:
+
+		ffuf -w /usr/share/wordlists/file_inclusion_windows.txt -u http://mailing.htb/download.php?file=FUZZ
+
 	For any input field try some:
 		SQLInjection
 		some xss - cross site scritting - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/xss_cross_site_scripting
 		some ssi - server side injection
 		some ssfr - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/ssrf
+
+### If we can't find an exploit view the source code
