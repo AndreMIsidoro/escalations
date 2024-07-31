@@ -67,7 +67,7 @@ Check which services are in the system. They may be vulnurable to some exploit
 	find / -type f \( -name *.conf -o -name *.config \) -exec ls -l {} \; 2>/dev/null - check config files for password, etc
 	find / -type f -name "*.sh" 2>/dev/null | grep -v "src\|snap\|share" - scripts may have wrong priveledges, and may have other valuable information
 	ps aux | grep root - check which services are beeing run by root
-	netstat -lantp - check open ports
+	ss -lantp - check open ports
 				Test them with wget and port forwarding (like chisel)
 
 ## Credential Hunting
