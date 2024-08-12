@@ -64,8 +64,10 @@ Check
 
 	For any input field try some:
 		SQLInjection
+			sqlmap
 		some xss - cross site scritting - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/xss_cross_site_scripting
 		some ssi - server side injection
 		some ssfr - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/ssrf
+			ssfrmap
 
 ### If we can't find an exploit view the source code
