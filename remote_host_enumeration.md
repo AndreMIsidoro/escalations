@@ -11,6 +11,10 @@
 	ports=$(nmap -p- --min-rate=1000 <target_ip> | grep ^[0-9] | cut -d '/'​ -f 1 | tr ​'\n'​ ​','​ | sed s/,$//)
 	nmap -sC -sV -O -p​$ports​ <target_ip>
 
+	then do a UDP port scanning as well:
+
+	sudo nmap --min-rate=1000 -sU <target_ip>
+
 ## Check the ports meaning
 
 	Use https://www.speedguide.net/port.php?port=5985 to check the ports default service
