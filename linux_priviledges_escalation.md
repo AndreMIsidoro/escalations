@@ -42,7 +42,7 @@
 
 Check if the users are stoing significant information and configurations
 
-	find / -user admin 2>/dev/null | grep -v '^/run\|^/proc\|^/sys'
+	find / -user root 2>/dev/null | grep -v '^/run\|^/proc\|^/sys'
 	cat ./bash_history - Get the commands that have been executed by the user
 	history - Get the commands that have been executed by the user (same as cat ./bash_history?)
 	find / -type f \( -name *_hist -o -name *_history \) -exec ls -l {} \; 2>/dev/null - find history files that may have been created by services or scripts
