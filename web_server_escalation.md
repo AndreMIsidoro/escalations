@@ -2,10 +2,6 @@
 
 ## Use Wappalyzer to get more information from the web server
 
-## Use the zap scanner
-
-Use the zap scanner to look for vulnerabilities
-
 ## If we have the web server version, search for exploits
 
 	https://www.cvedetails.com/
@@ -22,34 +18,38 @@ Use the zap scanner to look for vulnerabilities
 
 ### Use gobuster to brute force hidden pages
 
-	https://github.com/Andre92Marcos/tools/tree/master/gobuster
+Using gobuster:
 
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt -t 20
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -t 20
 	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt -t 20
 
+Using ffuf:
+
+	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-small.txt
+
+
 ### Check common files
 
-Check
 
-	robot.txt
-	README.txt
+	ffuf -u http://<target_ip>/FUZZ -w <my_wordlist>
+
+	https://github.com/Andre92Marcos/tools/blob/master/wordlists/my_webserver_files.txt
 
 
+### If we find a login form use the request to try some default passwords
 
-### Try default login of the running service
+	https://github.com/Andre92Marcos/tools/blob/master/wordlists/my_defaul_usernames.txt
+	https://github.com/Andre92Marcos/tools/blob/master/wordlists/my_default_passwords.txt
 
-	admin:admin
-	guest:guest
-	user:user
-	root:root
-	administrator:password
-
-	Try to search the default credentions for the webserver or webhost being used
-
-	we can also try to do some brute force with common user passoword combinations
+	Try to search the default credentials for the framework
 
 ### Check cookies to see if we can manipulate them
+
+### If there are pages with forms:
+
+	Try sql map injection on the fiels:
+	https://github.com/Andre92Marcos/tools/tree/master/sqlmap
 
 
 ### Check the list of possible vulnerabilities for web servers
@@ -64,7 +64,6 @@ Check
 
 	For any input field try some:
 		SQLInjection
-			sqlmap
 		some xss - cross site scritting - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/xss_cross_site_scripting
 		some ssi - server side injection
 		some ssfr - https://github.com/Andre92Marcos/vulnerabilities/tree/master/webservers/ssrf
