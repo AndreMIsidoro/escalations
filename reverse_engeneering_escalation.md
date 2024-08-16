@@ -14,7 +14,13 @@ Run strings command on the executable
 
 	strings -e b <filename>
 
-## 2 - Look at the executable code
+## Use ltrace
+
+Use ltrace to analyse the library calls:
+
+	ltrace ./<executable> <args>
+
+## Look at the executable code
 
 Using ghidra:
 
