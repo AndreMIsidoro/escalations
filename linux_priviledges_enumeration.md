@@ -15,6 +15,7 @@
 
 ## Gather More Basic Infomation
 
+	cat /etc/sudoers
 	find / -type f -user $usersname 2>/dev/null - find all files that belong to a user
 	cat /etc/os-release - operating system and version
 	echo $PATH - check what commands can and are been runned
