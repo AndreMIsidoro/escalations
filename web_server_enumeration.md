@@ -36,7 +36,7 @@ Using ffuf:
 
 	https://github.com/Andre92Marcos/tools/blob/master/wordlists/my_webserver_files.txt
 
-### Check the Headers fo http response fromt he server
+### Check the Headers fo http response from the server
 
 
 ### If we find a login form use the request to try some default passwords
