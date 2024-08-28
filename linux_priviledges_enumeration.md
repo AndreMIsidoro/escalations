@@ -24,7 +24,7 @@
 		Check the date the kernel is compiled if it's old, there may be some vulns that havent been patched
 	cat /etc/lsb-release - Get kernel version. Maybe it is a vulnerable kernel. Search google for exploit for the kernel
 	lscpu - Get information about the host architecture and cpu
-	/etc/shells - Get what shells exist on the server. The shell the user is using might be vulnurable
+	cat /etc/shells - Get what shells exist on the server. The shell the user is using might be vulnurable
 	lsblk - Get information on blocks and devices on the system. An unmounted drive my contain senstive information
 	cat /etc/fstab - Get information on blocks and devices on the system. An unmounted drive my contain senstive information
 	route - What other networks are available
