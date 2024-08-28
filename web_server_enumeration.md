@@ -28,6 +28,10 @@ Using ffuf:
 
 	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-small.txt
 
+### Crawl using sqlmap
+
+	sqlmap -u http://<target_ip> --crawl=1
+
 
 ### Check common files
 
