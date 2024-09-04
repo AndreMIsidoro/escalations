@@ -26,6 +26,12 @@ Use pwn checksec to check the security features of the binary
 
 	pwn checksec <binary>
 
+## Use ldd to check the shared objects
+
+Use ldd to check the shared objects of the binary
+
+	ldd <binary>
+
 ## Look at the executable code
 
 Using ghidra:
