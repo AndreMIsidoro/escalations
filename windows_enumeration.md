@@ -75,6 +75,10 @@
 		https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk
 	accesschk.exe -w \pipe\* -v		Enumerates all pipes that have WRITE permission
 
+## Check if account has SeDebugPrivilege
+
+	whoami /priv
+
 
 ## Remote Login with usermae and password
 
