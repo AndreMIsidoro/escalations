@@ -16,7 +16,14 @@
 
 	echo %USERNAME%		Print current user
 	whoami /priv		Displays current user privileges
+		Interesting Privileges:
+			SeDebugPrivilege
+			SeTakeOwnership
+			SeBackupPrivilege
 	whoami /groups		Displays current user groups
+		Interesting Groups:
+			Backup Operators
+			Event Log Readers
 	net user		Print all users
 	net localgroup		Print all groups
 	net localgroup <groupname>		Prints information of group
@@ -74,10 +81,6 @@
 	accesschk.exe /accepteula \\.\Pipe\<name_of_pipe> -v		Enumerate permissions of pipe. We are looking for a pipe we have WRITE permissions for our user
 		https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk
 	accesschk.exe -w \pipe\* -v		Enumerates all pipes that have WRITE permission
-
-## Check if account has SeDebugPrivilege
-
-	whoami /priv
 
 
 ## Remote Login with usermae and password
