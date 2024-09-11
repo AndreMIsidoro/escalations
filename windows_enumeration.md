@@ -20,10 +20,13 @@
 			SeDebugPrivilege
 			SeTakeOwnership
 			SeBackupPrivilege
+	whoami /priv in cmd as admin
 	whoami /groups		Displays current user groups
 		Interesting Groups:
 			Backup Operators
 			Event Log Readers
+			DnsAdmins
+	whoami /groups in cmd as admin
 	net user		Print all users
 	net localgroup		Print all groups
 	net localgroup <groupname>		Prints information of group
