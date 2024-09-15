@@ -88,6 +88,15 @@
 	accesschk.exe -w \pipe\* -v		Enumerates all pipes that have WRITE permission
 
 
+## Check weak permission
+
+	Use the sharpup too to check service binaries suffering from weak ACLS
+
+		SharpUP.exe audit
+			https://github.com/GhostPack/SharpUp/
+	Check permissions using icacls
+		https://ss64.com/nt/icacls.html
+
 ## Remote Login with usermae and password
 
 We can try doing remote logins with useranmes and passwords using a script from impacket
