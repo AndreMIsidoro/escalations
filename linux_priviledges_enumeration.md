@@ -181,6 +181,10 @@ And then doing
 
 	Remember to specify the complete path to root.so
 
+## If we find a way to run a command as root
+
+	We can do chmod +s /bin/bash and then we the unprivilege account do /bin/bash -p to get a bash as root
+
 
 ## Run linPEAS script
 
