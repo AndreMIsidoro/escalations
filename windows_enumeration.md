@@ -78,6 +78,8 @@
 
 			cmd /c "copy <filen_name>.dmp X:\"
 
+	cmdkey /list	Lists stored credentials
+
 ## Check communication through processess using pipes
 
 	pipelist.exe /accepteula		enumerate instances of named pipes
@@ -97,7 +99,12 @@
 	Check permissions using icacls
 		https://ss64.com/nt/icacls.html
 
-## Remote Login with usermae and password
+
+## If we are in a Active Directory Environment
+
+	Use snaffler to search for credentials.
+
+## Remote Login with username and password
 
 We can try doing remote logins with useranmes and passwords using a script from impacket
 
