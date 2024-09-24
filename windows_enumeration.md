@@ -118,3 +118,4 @@ We can try doing remote logins with useranmes and passwords using a script from 
 ## More info
 
 	https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
+	https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation
