@@ -9,8 +9,6 @@
 
 ## Scan for subdomains
 
-	Using knockpy
-	Using dnsrecon
 	Using ffuzz
 		ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -u http://<domain> -H "Host: FUZZ.<domain>"
 		if there are many false positives we can filter them out by number of words
@@ -18,15 +16,9 @@
 
 ### Use gobuster to brute force hidden pages
 
-Using gobuster:
-
-	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt -t 20
-	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -t 20
-	gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/big.txt -t 20
-
 Using ffuf:
 
-	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-small.txt
+	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-medium.txt
 
 ### Crawl using sqlmap
 
