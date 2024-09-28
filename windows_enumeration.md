@@ -36,18 +36,7 @@
 		https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist
 
 	set		Prints env variables including PATH
-	systeminfo		Prints information of the system, including hotfixes applied
-		https://www.catalog.update.microsoft.com/Search.aspx?q=hotfix
-		If systeminfo doesn't display hotfixes, they may be queriable with WMI using the WMI-Command binary with QFE (Quick Fix Engineering) to display patches.
-
-		wmic qfe 
-		https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page
-		https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
-
-		We can do this with PowerShell as well using the Get-Hotfix cmdlet.
-
-		Get-HotFix | ft -AutoSize
-
+	
 	wmic product get name		Get installed programs
 		or using powershell
 		Get-WmiObject -Class Win32_Product |  select Name, Version
@@ -79,6 +68,24 @@
 			cmd /c "copy <filen_name>.dmp X:\"
 
 	cmdkey /list	Lists stored credentials
+
+## System info
+
+Check if Windows version has any known vulnerability (also check the patches applied)
+
+		https://www.catalog.update.microsoft.com/Search.aspx?q=hotfix
+		systeminfo #Prints information of the system, including hotfixes applied
+		systeminfo | findstr /B /C:"OS Name" /C:"OS Version" #Get only that information
+
+		If systeminfo doesn't display hotfixes, they may be queriable with WMI using the WMI-Command binary with QFE (Quick Fix Engineering) to display patches.
+
+		wmic qfe get Caption,Description,HotFixID,InstalledOn #Patches
+		wmic os get osarchitecture || echo %PROCESSOR_ARCHITECTURE% #Get system architecture
+
+		[System.Environment]::OSVersion.Version #Current OS version
+		Get-WmiObject -query 'select * from win32_quickfixengineering' | foreach {$_.hotfixid} #List all patches
+		Get-HotFix | ft -AutoSize
+		Get-Hotfix -description "Security update" #List only "Security Update" patches
 
 ## Check communication through processess using pipes
 
