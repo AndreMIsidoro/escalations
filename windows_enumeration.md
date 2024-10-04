@@ -20,6 +20,7 @@
 			SeDebugPrivilege
 			SeTakeOwnership
 			SeBackupPrivilege
+				https://www.hackingarticles.in/windows-privilege-escalation-sebackupprivilege/
 			SeLoadDriverPrivilege
 	whoami /priv in cmd as admin
 	whoami /groups		Displays current user groups
