@@ -30,6 +30,7 @@
 			DnsAdmins
 			Server Operators
 	whoami /groups in cmd as admin
+	whoami /all
 	net user		Print all users
 	net localgroup		Print all groups
 	net localgroup <groupname>		Prints information of group
