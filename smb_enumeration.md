@@ -17,9 +17,9 @@ In msfconsole
 
 ## Enumeration using netexec
 
-netexec smb <target_ip> -u '' -p '' --shares
+netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --shares #doesnt work with empty usernames and passwords
 
-netexec smb <target_ip> -u '' -p '' --pass-pol
+netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --pass-pol
 
 
 https://www.netexec.wiki/smb-protocol/enumeration
