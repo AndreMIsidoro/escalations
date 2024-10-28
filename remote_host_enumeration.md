@@ -4,11 +4,11 @@
 
 ## Run nmap scripts on open ports **
 
-	sudo nmap -p <open_ports> -sC -sV -O <target_ip>
+	sudo nmap -p <open_ports> -sC -sV -vv -oN nmap.out <target_ip>
 
 	or we can do
 
-	ports=$(nmap -p- --min-rate=1000 <target_ip> | grep ^[0-9] | cut -d '/'​ -f 1 | tr ​'\n'​ ​','​ | sed s/,$//)
+	ports=$(nmap -p- --min-rate=1000 <target_ip> | grep ^[0-9] | cut -d '/'​ -f 1 | tr ​'\n'​ ​','​ | awk '{print substr($0,1,length($0)-1)})
 	nmap -sC -sV -O -p​$ports​ <target_ip>
 
 	then do a UDP port scanning as well:
