@@ -21,6 +21,8 @@ netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --shares #doesnt wor
 
 netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --pass-pol
 
+netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' -M spider_plus #creates a file tree of the shares
+
 
 https://www.netexec.wiki/smb-protocol/enumeration
 
