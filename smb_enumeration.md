@@ -40,9 +40,13 @@ Show he contentes of a share
 
 	netexec smb heist.htb -u usernames.txt -p passwords.txt --continue-on-success
 
-use the --rid-brute option to possibly reveal other user names
+When we have a valid user, we can try the --rid-brute option to possibly reveal other user names
 
-	netexec smb heist.htb -u usernames.txt -p passwords.txt --rid-brute
+	netexec smb heist.htb -u 'user' -p 'password --rid-brute
+
+	This valid user might be the default user 'Guest'
+
+	netexec smb heist.htb -u 'Guest' -p '' --rid-brute #Guest default password is blank
 
 ## If you find an empty file in the share we can look for some hidden data:
 
