@@ -59,7 +59,7 @@
 
 		We can do the same in powershell:
 
-			impackter-smbserver.py -smb2support share <path_to_folder_we_want_to_share>
+			impacket-smbserver.py -smb2support share <path_to_folder_we_want_to_share>
 
 			in powershell
 
