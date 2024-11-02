@@ -70,6 +70,9 @@ We can download this data stream by doing:
 	netexec smb $targetip -u $username -p $password --rid-brute
 
 
+## If we get a pwned with a user that means we can psexec into the box with that user
+
+
 ## Cookbook
 
 Download multiple files
