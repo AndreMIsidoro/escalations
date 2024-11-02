@@ -10,6 +10,8 @@
 			SeBackupPrivilege
 				https://www.hackingarticles.in/windows-privilege-escalation-sebackupprivilege/
 			SeLoadDriverPrivilege
+			Se Impersonate and SeAssignPrimaryToken
+				https://github.com/ohpe/juicy-potato
 	whoami /priv in cmd as admin
 	whoami /groups		Displays current user groups
 		Interesting Groups:
