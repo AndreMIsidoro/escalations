@@ -72,6 +72,8 @@ We can download this data stream by doing:
 
 ## If we get a pwned with a user that means we can psexec into the box with that user
 
+https://github.com/Andre92Marcos/tools/tree/master/psexec
+
 
 ## Cookbook
 
