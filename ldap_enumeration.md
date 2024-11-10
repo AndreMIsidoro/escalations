@@ -1,5 +1,13 @@
 # ldap - Enumeration
 
+## Use ldapdomaindump
+
+https://github.com/Andre92Marcos/tools/tree/master/ldapDomainDump
+
+## Use netexec
+
+https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
+
 ## When we get access to a domain user
 
 Use bloodhound
