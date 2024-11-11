@@ -1,5 +1,15 @@
 # ldap - Enumeration
 
+## Sync time with kerberos
+
+To figure out the difference in time with the kerberos server:
+
+   sudo ntpdate 10.129.127.130
+
+To simulate the difference in time when executing a command:
+
+   faketime -f '+7h' <command>
+
 ## Use ldapdomaindump
 
 https://github.com/Andre92Marcos/tools/tree/master/ldapDomainDump
@@ -12,9 +22,8 @@ https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
 Use bloodhound
 
-   bloodhound-python -d <domain_name> -c all -u <username> -p <password> -ns <target_ip> --zip
+   https://github.com/Andre92Marcos/tools/tree/master/bloodhound
 
-   If we dont have the password of the user, we can download the sharphound.exe and run it directly on the user
 
 Use responder to get hash and try to crack it
 
