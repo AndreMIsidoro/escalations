@@ -6,3 +6,8 @@
 		ftp <target_ip>
 		User: anonymous
 		Pass> <none>
+
+
+## use netexec tool
+
+	https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ftp
