@@ -25,10 +25,14 @@ Use bloodhound
    https://github.com/Andre92Marcos/tools/tree/master/bloodhound
 
 
-Use responder to get hash and try to crack it
 
 Use the snaffler tool
 
 ## Enumerate users found to see if they pre authenticate to kerberos
 
    kerbrute userenum --dc <ip_to_domain_controller> -d <full_domain_name>
+
+## If we can make the target make a smb request back to us
+
+   For example using sqlinjection, we can use responder to get hash and try to crack it
+   https://github.com/Andre92Marcos/tools/tree/master/responder
