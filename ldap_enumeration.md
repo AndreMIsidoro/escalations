@@ -36,3 +36,16 @@ Use the snaffler tool
 
    For example using sqlinjection, we can use responder to get hash and try to crack it
    https://github.com/Andre92Marcos/tools/tree/master/responder
+
+
+## If we are not finding anythin with bloodhound
+
+Load powesploit PowerView.ps1 from:
+
+   https://github.com/PowerShellMafia/PowerSploit/tree/dev
+
+And then run 
+
+   Find-InterestingDomainAcl -ResolveGUIDS | ConvertTo-Json
+
+This might find relations that bloodhound missed
