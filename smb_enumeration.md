@@ -17,12 +17,15 @@ In msfconsole
 
 ## Enumeration using netexec
 
-netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --shares #doesnt work with empty usernames and passwords
+	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --shares #doesnt work with empty usernames and passwords
 
-netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --pass-pol
+	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --pass-pol
 
-netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' -M spider_plus #creates a file tree of the shares
+	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' -M spider_plus #creates a file tree of the shares
 
+Dump all files
+
+	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' -M spider_plus -o DOWNLOAD_FLAG=True
 
 https://www.netexec.wiki/smb-protocol/enumeration
 
