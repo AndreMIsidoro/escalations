@@ -12,6 +12,10 @@ If there are shares to access we can try to connect doing:
 
 	smbclient \\\\<hostname>\\<sharename>>
 
+We can print all files of a share by doing:
+
+	smbclient \\\\<hostname>\\sharename -c 'recurse;ls'
+
 ### Null Session
 
 	netexec smb <target-ip> -u '' -p ''
