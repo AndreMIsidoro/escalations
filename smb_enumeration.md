@@ -85,9 +85,11 @@ We can download this data stream by doing:
 	get <nameofile>:Password
 
 
-## If we get a pwned with a user that means we can psexec into the box with that user
+## If we have an account with read/write permission
 
-https://github.com/Andre92Marcos/tools/tree/master/psexec
+We can psexec into that account
+
+	https://github.com/Andre92Marcos/tools/tree/master/psexec
 
 
 ## Cookbook
