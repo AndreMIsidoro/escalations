@@ -18,6 +18,14 @@ https://github.com/Andre92Marcos/tools/tree/master/ldapDomainDump
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
+
+## When we have a domain username, but no password
+
+Run impacket-GetNPUsers
+
+   https://github.com/Andre92Marcos/tools/blob/master/impacket/getNPUsers.md
+
+
 ## When we get access to a domain user
 
 Use bloodhound
@@ -25,8 +33,8 @@ Use bloodhound
    https://github.com/Andre92Marcos/tools/tree/master/bloodhound
 
 
-
 Use the snaffler tool
+
 
 ## Enumerate users found to see if they pre authenticate to kerberos
 
