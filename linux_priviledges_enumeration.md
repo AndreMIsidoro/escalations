@@ -1,5 +1,10 @@
 # Linux Priviledges Escalation
 
+## If the host is running a webapp
+
+	Go look at the webapp dir to find configs and he code
+	Go look at the database
+
 ## Gather Basic Informaiton
 
 	whoami - what user are we running as
