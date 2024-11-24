@@ -1,5 +1,10 @@
 # Windows Enumeration
 
+## If the host is running a webapp
+
+	Go look at the webapp dir to find configs and he code
+	Go look at the database
+
 ## Basic System Information
 
 	echo %USERNAME%		Print current user
