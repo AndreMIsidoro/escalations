@@ -23,6 +23,10 @@ Purpose: sites-available/: Contains configurations for individual websites or vi
 
 Location: /etc/apache2/sites-available/ and /etc/apache2/sites-enabled/
 
+Single-Site Hosting default naming: 000-default.conf
+(To ensure it is loaded first)
+
+Sub domains naming: subdomain.maindomai.com.conf
 
 ### conf.d/ or extra/
 
@@ -39,3 +43,11 @@ Purpose: Directory-level configuration file to override global or virtual host s
 Location: Found in specific directories within DocumentRoot or other paths as allowed by the AllowOverride directive.
 
 Use Cases: URL rewriting. Access control.Custom error documents. Setting environmental variables.
+
+### .htpasswd
+
+Purpose: Stores user credentials securely for authentication. Used with the AuthUserFile directive in .htaccess or the main Apache configuration.
+
+Location: Can be located anywhere on the server. But commonly stored out side of the web root for additional security, like:
+
+    /var/www/subdomain.maindomain/.htpasswd
