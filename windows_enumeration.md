@@ -5,6 +5,9 @@
 	Go look at the webapp dir to find configs and he code
 	Go look at the database
 	Look at the configs of the other apps running: ftp, mails, etc
+	Search users home with:
+		get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg
+		get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg | select-string password
 
 ## Basic System Information
 
