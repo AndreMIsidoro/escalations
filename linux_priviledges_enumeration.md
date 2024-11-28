@@ -4,6 +4,7 @@
 
 	Go look at the webapp dir to find configs and he code
 	Go look at the database
+	Look at the configs of the other apps running: ftp, mails, etc
 
 ## Gather Basic Informaiton
 
