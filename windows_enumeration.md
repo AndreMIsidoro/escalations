@@ -184,6 +184,12 @@ Good dir to save, download and write files:
 
 	C:\Users\Public\
 
+## Payloads
+
+Use https://github.com/Andre92Marcos/myScripts/blob/main/rev_shell_exe.c to generate a reverse shell exe:
+
+	x86_64-w64-mingw32-gcc rev_shell_exe.c -o rev_shell.exe
+
 ## More info
 
 	https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
