@@ -30,6 +30,7 @@
 			Server Operators
 	whoami /groups in cmd as admin
 	whoami /all
+	echo %PROCESSOR_ARCHITECTURE%
 	net user		Print all users
 	net localgroup		Print all groups
 	net localgroup administrators
