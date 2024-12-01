@@ -14,6 +14,8 @@
 		if we are in docker group we can do:
 			docker run run -v /:/mnt --rm -it ubuntu chroot /mnt bash to mount the root filesystem and escalate
 		find / -group <group_name> 2>/dev/null	finds files that belong to a specific group
+	uname -a - Get kernel version and OS architecture. Maybe it is a vulnerable kernel
+		Check the date the kernel is compiled if it's old, there may be some vulns that havent been patched
 	hostname - what is the server named. can we gather any info from the naming convention
 	ifconfig of ip a - what subnet did we land in, does the host have additional NICs in other subnets
 	sudo -l - can our user run anything with sudo (as another user as root) without needing a password? This can sometimes be the easiest win and we can do something like sudo su and drop right into a root shell.
@@ -26,8 +28,6 @@
 	cat /etc/os-release - operating system and version
 	echo $PATH - check what commands can and are been runned
 	env - check any env variable for sensitive information
-	uname -a - Get kernel version. Maybe it is a vulnerable kernel
-		Check the date the kernel is compiled if it's old, there may be some vulns that havent been patched
 	cat /etc/lsb-release - Get kernel version. Maybe it is a vulnerable kernel. Search google for exploit for the kernel
 	lscpu - Get information about the host architecture and cpu
 	cat /etc/shells - Get what shells exist on the server. The shell the user is using might be vulnurable
