@@ -19,6 +19,7 @@
 Using ffuf:
 
 	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-medium.txt
+	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/dirb/wordlists/common.txt
 
 ### Crawl using sqlmap
 
