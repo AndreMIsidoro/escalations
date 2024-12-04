@@ -50,6 +50,12 @@ Try to rid-brute force
 
 This valid user might be the default user 'Guest'
 
+## Try local authentication
+
+Adding --local-auth to any of the authentication commands with attempt to logon locally.
+
+	nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --local-auth
+
 ## More netexec enum
 
 	https://www.netexec.wiki/smb-protocol/enumeration
