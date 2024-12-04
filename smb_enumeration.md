@@ -32,29 +32,34 @@ If we found a session with netexec then do:
 	--pass-pol
 	--users
 	--groups
+	--sam (only local admin?)
+	--rit-brute
 
-	-M spider_plus #creates a file tree of the shares
-	-M spider_plus -o DOWNLOAD_FLAG=True # to dump all files
+	--loggedon-users
 
-	To download a specific file we can use smbmap
+If there are logged on users whe can try some impersonting scheduling of tasks
+
+	-M schtask_as -o USER=<loggedon_username> CMD=whoami
+
 
 ## Test users
 
 	netexec smb <target_ip> -u usernames.txt -p passwords.txt --continue-on-success
 
-## When we have a valid username and password
-
-Try to rid-brute force
-
-	netexec smb heist.htb -u 'Guest' -p '' --rid-brute #Guest default password is blank
-
-This valid user might be the default user 'Guest'
 
 ## Try local authentication
 
 Adding --local-auth to any of the authentication commands with attempt to logon locally.
 
 	nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --local-auth
+
+
+# File system tree and downloading files
+
+	-M spider_plus #creates a file tree of the shares
+	-M spider_plus -o DOWNLOAD_FLAG=True # to dump all files
+
+	To download a specific file we can use smbmap
 
 ## More netexec enum
 
