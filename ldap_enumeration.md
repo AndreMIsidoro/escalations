@@ -1,6 +1,8 @@
 # ldap - Enumeration
 
-## Sync time with kerberos
+## When we dont have anything
+
+### Sync time with kerberos
 
 To figure out the difference in time with the kerberos server:
 
@@ -10,16 +12,27 @@ To simulate the difference in time when executing a command:
 
    faketime -f '+7h' <command>
 
-## Use ldapdomaindump
+### Use ldapdomaindump
 
 https://github.com/Andre92Marcos/tools/tree/master/ldapDomainDump
 
-## Use netexec
+### Use netexec
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
+## When we have a domain username, no password, no access to target
 
-## When we have a domain username, but no password
+Enumerate users found to see if they pre authenticate to kerberos
+
+   kerbrute userenum --dc <ip_to_domain_controller> -d <full_domain_name> <filename_with_usernames>
+
+If we can make the target make a smb request back to us
+
+   For example using sqlinjection, we can use responder to get hash and try to crack it
+   https://github.com/Andre92Marcos/tools/tree/master/responder
+
+
+## When we have a domain username, but no password, but we have access to target
 
 Do a gci request to get the user hash (and use it in other protocols, and try to crack it), with responder running
 
@@ -29,6 +42,10 @@ Run impacket-GetNPUsers
 
    https://github.com/Andre92Marcos/tools/blob/master/impacket/getNPUsers.md
 
+Run impacket-GetUsersSPNsA
+
+   https://github.com/Andre92Marcos/tools/blob/master/impacket/getUserSPNs.md
+
 Use bloodhound
 
    https://github.com/Andre92Marcos/tools/tree/master/bloodhound
@@ -37,24 +54,14 @@ Use bloodhound
 Use the snaffler tool
 
 
-## Enumerate users found to see if they pre authenticate to kerberos
+If we are not finding anythin with bloodhound
 
-   kerbrute userenum --dc <ip_to_domain_controller> -d <full_domain_name> <filename_with_usernames>
+   Load powesploit PowerView.ps1 from:
 
-## If we can make the target make a smb request back to us
+      https://github.com/PowerShellMafia/PowerSploit/tree/dev
 
-   For example using sqlinjection, we can use responder to get hash and try to crack it
-   https://github.com/Andre92Marcos/tools/tree/master/responder
+   And then run 
 
+      Find-InterestingDomainAcl -ResolveGUIDS | ConvertTo-Json
 
-## If we are not finding anythin with bloodhound
-
-Load powesploit PowerView.ps1 from:
-
-   https://github.com/PowerShellMafia/PowerSploit/tree/dev
-
-And then run 
-
-   Find-InterestingDomainAcl -ResolveGUIDS | ConvertTo-Json
-
-This might find relations that bloodhound missed
+   This might find relations that bloodhound missed
