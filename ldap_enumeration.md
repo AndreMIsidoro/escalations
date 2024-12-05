@@ -51,6 +51,11 @@ Use bloodhound
    https://github.com/Andre92Marcos/tools/tree/master/bloodhound
 
 
+If our user have some special permissions run secretdump
+
+   https://github.com/Andre92Marcos/tools/blob/master/impacket/secretdump.md
+
+
 Use the snaffler tool
 
 
@@ -65,3 +70,9 @@ If we are not finding anythin with bloodhound
       Find-InterestingDomainAcl -ResolveGUIDS | ConvertTo-Json
 
    This might find relations that bloodhound missed
+
+## When have a local Admin or domain Admin
+
+Use mimikatz tool. (Also if we have user with SeDebugPrivilege)
+
+   https://github.com/Andre92Marcos/tools/tree/master/mimikatz
