@@ -20,11 +20,14 @@ https://github.com/Andre92Marcos/tools/tree/master/ldapDomainDump
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
-## When we have a domain username, no password, no access to target
+## If we have usernames and want to check if they are domain usernames
 
 Enumerate users found to see if they pre authenticate to kerberos
 
    kerbrute userenum --dc <ip_to_domain_controller> -d <full_domain_name> <filename_with_usernames>
+
+
+## When we have a domain username, no password, no access to target
 
 If we can make the target make a smb request back to us
 
@@ -49,6 +52,10 @@ Run impacket-GetUsersSPNsA
 
    https://github.com/Andre92Marcos/tools/blob/master/impacket/getUserSPNs.md
 
+Use the snaffler tool
+
+   https://github.com/Andre92Marcos/tools/tree/master/snaffler
+
 Use bloodhound
 
    https://github.com/Andre92Marcos/tools/tree/master/bloodhound
@@ -59,7 +66,6 @@ If our user have some special permissions run secretdump
    https://github.com/Andre92Marcos/tools/blob/master/impacket/secretdump.md
 
 
-Use the snaffler tool
 
 
 If we are not finding anythin with bloodhound
