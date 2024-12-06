@@ -31,6 +31,9 @@ If we can make the target make a smb request back to us
    For example using sqlinjection, we can use responder to get hash and try to crack it
    https://github.com/Andre92Marcos/tools/tree/master/responder
 
+Use bloodhound
+
+   https://github.com/Andre92Marcos/tools/tree/master/bloodhound
 
 ## When we have a domain username, but no password, but we have access to target
 
