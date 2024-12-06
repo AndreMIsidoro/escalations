@@ -20,6 +20,12 @@ https://github.com/Andre92Marcos/tools/tree/master/ldapDomainDump
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
+## When we have access to target's network
+
+Start responder to try to do some poisoning
+
+   https://github.com/Andre92Marcos/tools/tree/master/responder
+
 ## If we have usernames and want to check if they are domain usernames
 
 Enumerate users found to see if they pre authenticate to kerberos
