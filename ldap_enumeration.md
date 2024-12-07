@@ -2,6 +2,13 @@
 
 ## When we dont have anything
 
+## Do simple enum of services (RPC,SMB)
+
+Use enum4linux-ng
+
+   https://github.com/Andre92Marcos/tools/tree/master/enum4linux-ng
+
+
 ## Try to do an ldap anonymous bind
 
    ldapsearch -x -b "dc=example,dc=com"
