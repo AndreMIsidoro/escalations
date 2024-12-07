@@ -21,16 +21,18 @@
 			SeLoadDriverPrivilege
 			Se Impersonate and SeAssignPrimaryToken
 				https://github.com/ohpe/juicy-potato
-	whoami /priv in cmd as admin
 	whoami /groups		Displays current user groups
 		Interesting Groups:
 			Backup Operators
 			Event Log Readers
 			DnsAdmins
 			Server Operators
-	whoami /groups in cmd as admin
 	whoami /all
+	hostname		Prints the PC's Name
+	[System.Environment]::OSVersion.Version		Prints out the OS version and revision level
 	echo %PROCESSOR_ARCHITECTURE%
+	echo %USERDOMAIN%		Displays the domain name to which the host belongs
+	echo %logonserver%		Prints out the name of the Domain controller the host checks in with
 	net user		Print all users
 	net localgroup		Print all groups
 	net localgroup administrators
@@ -91,9 +93,26 @@ Get process information by pid:
 
 ## Gather Network Information
 
-	ipconfig /all
+	ipconfig /all	Prints out network adapter state and configurations
 	arp -a
 	route print
+
+## Powershell Enumeration
+
+	Get-Module 		Lists available modules loaded for use.
+	Get-ExecutionPolicy -List		Will print the execution policy settings for each scope on a host.
+	Set-ExecutionPolicy Bypass -Scope Process	This will change the policy for our current process using the -Scope parameter. Doing so will revert the policy once we vacate the process or terminate it. This is ideal because we won't be making a permanent change to the victim host.
+
+	Get-ChildItem Env: | ft Key,Value		Return environment values such as key paths, users, computer information, etc.
+	Get-Content $env:APPDATA\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt		With this string, we can get the specified user's PowerShell history. This can be quite helpful as the command history may contain passwords or point us towards configuration files or scripts that contain passwords
+
+### Downgrading Powershell
+
+Many defenders are unaware that several versions of PowerShell often exist on a host. If not uninstalled, they can still be used. Powershell event logging was introduced as a feature with Powershell 3.0 and forward. With that in mind, we can attempt to call Powershell version 2.0 or older. If successful, our actions from the shell will not be logged in Event Viewer. This is a great way for us to remain under the defenders' radar while still utilizing resources built into the hosts to our advantage. Below is an example of downgrading Powershell.
+
+	powershell.exe -version 2
+	Get-host
+
 
 ## Enumerate Protections
 
@@ -153,9 +172,6 @@ Check if Windows version has any known vulnerability (also check the patches app
 		https://ss64.com/nt/icacls.html
 
 
-## If we are in a Active Directory Environment
-
-	Use snaffler to search for credentials.
 
 ## Remote Login with username and password
 
