@@ -97,6 +97,8 @@ Get process information by pid:
 
 ## Enumerate Protections
 
+	https://github.com/Andre92Marcos/escalations/blob/master/ldap_security_enumeration.md
+
 	Get-MpComputerStatus
 	Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
 	Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System32\cmd.exe -User Everyone 		Tests Applocker policy
