@@ -51,7 +51,7 @@ Run impacket-GetNPUsers
 
    https://github.com/Andre92Marcos/tools/blob/master/impacket/getNPUsers.md
 
-Run impacket-GetUsersSPNsA
+Run impacket-GetUsersSPNs
 
    https://github.com/Andre92Marcos/tools/blob/master/impacket/getUserSPNs.md
 
