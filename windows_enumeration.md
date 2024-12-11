@@ -37,6 +37,12 @@
 	net localgroup		Print all groups
 	net localgroup administrators
 	net localgroup <groupname>		Prints information of group
+	net share 	Check current shares
+	net accounts /domain
+	net group /domain
+	net groups /domain
+	net group <domain_group_name> /domain
+	net user <ACCOUNT_NAME> /domain
 	tasklist /svc		Gives a better idea of what applications are running on the system. Prints the name of executables and services running
 		https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist
 
@@ -49,8 +55,10 @@
 	netstat -ano		Display active tcp and udp connections
 	query user		Display active users
 	net accounts		Prints password policy
+	qwinsta		Shows active sessions in host
 
 	get-process		Enumerates running processes
+	wmic process list /format:list	 	A listing of all processes on host
 
 		Use procdump https://learn.microsoft.com/en-us/sysinternals/downloads/procdump , to dump the memory of any interesting running process
 
@@ -121,6 +129,9 @@ Many defenders are unaware that several versions of PowerShell often exist on a 
 	Get-MpComputerStatus
 	Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
 	Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System32\cmd.exe -User Everyone 		Tests Applocker policy
+	sc query windefend		Checks if Windows Defender is running
+
+	netsh advfirewall show allprofiles		Checks Windows Firewall settings
 
 
 ## System info
@@ -133,7 +144,7 @@ Check if Windows version has any known vulnerability (also check the patches app
 
 		If systeminfo doesn't display hotfixes, they may be queriable with WMI using the WMI-Command binary with QFE (Quick Fix Engineering) to display patches.
 
-		wmic qfe get Caption,Description,HotFixID,InstalledOn #Patches
+		wmic qfe get Caption,Description,HotFixID,InstalledOn		Prints the patch level and description of the Hotfixes applied 
 		wmic os get osarchitecture || echo %PROCESSOR_ARCHITECTURE% #Get system architecture
 
 		[System.Environment]::OSVersion.Version #Current OS version
