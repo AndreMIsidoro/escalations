@@ -1,3 +1,10 @@
+## Discover Hosts
+
+	fping -asgq <network>
+	fping -asgq 172.16.5.0/23
+
+	sudo responder -I <interface> -A
+
 ## Scan ports
 	
 	sudo nmap -p- --min-rate=1000 <target_ip> > nmap.output
