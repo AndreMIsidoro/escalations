@@ -1,15 +1,20 @@
 # ldap - Enumeration
 
+## Keep in mind
+
+   https://github.com/Andre92Marcos/escalations/blob/master/active_directory_attacks_enumeration.md
+   https://github.com/Andre92Marcos/escalations/blob/master/ldap_security_enumeration.md
+
 ## When we dont have anything
 
-## Do simple enum of services (RPC,SMB)
+### Do simple enum of services (RPC,SMB)
 
 Use enum4linux-ng
 
    https://github.com/Andre92Marcos/tools/tree/master/enum4linux-ng
 
 
-## Try to do an ldap anonymous bind
+### Try to do an ldap anonymous bind
 
    ldapsearch -x -b "dc=example,dc=com"
 
