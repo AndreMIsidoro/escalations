@@ -1,5 +1,11 @@
 # smb Enumeration
 
+## Basic enumeration
+
+Use enum4linux-ng
+
+	enum4linux-ng -A <target_ip> -oA <ouput_file>
+
 ## Check Sessions
 
 ### Anonymous Session
