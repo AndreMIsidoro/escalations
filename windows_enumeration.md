@@ -38,11 +38,6 @@
 	net localgroup administrators
 	net localgroup <groupname>		Prints information of group
 	net share 	Check current shares
-	net accounts /domain
-	net group /domain
-	net groups /domain
-	net group <domain_group_name> /domain
-	net user <ACCOUNT_NAME> /domain
 	tasklist /svc		Gives a better idea of what applications are running on the system. Prints the name of executables and services running
 		https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist
 
