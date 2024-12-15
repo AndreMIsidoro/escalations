@@ -129,6 +129,10 @@ Get users with SPN property set
 
     Get-DomainUser -SPN -Properties samaccountname,ServicePrincipalName
 
+Get users with password not required property set
+
+    Get-DomainUser -UACFilter PASSWD_NOTREQD | Select-Object samaccountname,useraccountcontrol
+
 
 Get users that belong to a specific group
 
