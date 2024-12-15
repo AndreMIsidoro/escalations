@@ -11,6 +11,7 @@ Shows security groups that a user can add themselves to.
 ### ForceChangePassword
 
     Abused with Set-DomainUserPassword
+    https://github.com/Andre92Marcos/tools/blob/master/powersploit/PowerView.md#functions
 
 Gives us the right to reset a user's password without first knowing their password (should be used cautiously and typically best to consult our client before resetting passwords).
 
