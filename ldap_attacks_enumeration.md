@@ -1,5 +1,6 @@
 # active directory attacks enumeration
 
+
 ## ACL
 
 ### Addself
@@ -48,6 +49,28 @@ WriteDACL abused with Add-DomainObjectACL
 AllExtendedRights abused with Set-DomainUserPassword or Add-DomainGroupMember
 Add Members abused with Add-DomainGroupMember
 
+## ASREPRoasting
+
+It's possible to obtain the Ticket Granting Ticket (TGT) for any account that has the Do not require Kerberos pre-authentication setting enabled. Many vendor installation guides specify that their service account be configured in this way. The authentication service reply (AS_REP) is encrypted with the account’s password, and any domain user can request it.
+
+With pre-authentication, a user enters their password, which encrypts a time stamp. The Domain Controller will decrypt this to validate that the correct password was used. If successful, a TGT will be issued to the user for further authentication requests in the domain. If an account has pre-authentication disabled, an attacker can request authentication data for the affected account and retrieve an encrypted TGT from the Domain Controller. This can be subjected to an offline password attack using a tool such as Hashcat or John the Ripper.
+
+ASREPRoasting is similar to Kerberoasting, but it involves attacking the AS-REP instead of the TGS-REP. An SPN is not required. This setting can be enumerated with PowerView or built-in tools such as the PowerShell AD module.
+
+The attack itself can be performed with the Rubeus toolkit and other tools to obtain the ticket for the target account. If an attacker has GenericWrite or GenericAll permissions over an account, they can enable this attribute and obtain the AS-REP ticket for offline cracking to recover the account's password before disabling the attribute again. Like Kerberoasting, the success of this attack depends on the account having a relatively weak password.
+
+This attack does not require any domain user context and can be done by just knowing the SAM name for the user without Kerberos pre-auth.
+
+
+    .\Rubeus.exe asreproast /user:<domain_username> /nowrap /format:hashcat
+
+When performing user enumeration with Kerbrute, the tool will automatically retrieve the AS-REP for any users found that do not require Kerberos pre-authentication.
+
+    kerbrute userenum -d <domain_name> --dc <domain_controller_ip> <domain_usernames_list>.txt
+
+Or use impacket Get-NPUsers.py
+
+    GetNPUsers.py <domain_name>/ -dc-ip <domain_controller_ip> -no-pass -usersfile <domain_usernames_list>.txt
 
 ## LLMNR/NBT-NS Poisoning
 
@@ -85,3 +108,13 @@ Using noPac to DCSync the Built-in Administrator Account
 
 
 ## Shadow Credentials
+
+
+Active Directory Certificate Services (AD CS) attacks
+Kerberos Constrained Delegation
+Kerberos Unconstrained Delegation
+Kerberos Resource-Based Constrained Delegation (RBCD)
+
+PrintNightmare
+
+PetitPotam (MS-EFSRPC)
