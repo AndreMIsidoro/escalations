@@ -33,6 +33,7 @@
 	echo %PROCESSOR_ARCHITECTURE%
 	echo %USERDOMAIN%		Displays the domain name to which the host belongs
 	echo %logonserver%		Prints out the name of the Domain controller the host checks in with
+	net accounts	Print passworwd policy
 	net user		Print all users
 	net localgroup		Print all groups
 	net localgroup administrators
