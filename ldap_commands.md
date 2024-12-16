@@ -133,6 +133,10 @@ Get users with password not required property set
 
     Get-DomainUser -UACFilter PASSWD_NOTREQD | Select-Object samaccountname,useraccountcontrol
 
+Get users with dont req preauth property set
+
+    Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,useraccountcontrol | fl
+
 
 Get users that belong to a specific group
 
