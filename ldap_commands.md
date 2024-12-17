@@ -144,6 +144,7 @@ Get users that belong to a specific group
 
 Get domain trust relationships
 
+    Get-DomainTrust
     Get-DomainTrustMapping
 
 Test local admin access to remote machine
