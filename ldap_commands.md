@@ -137,10 +137,21 @@ Get users with dont req preauth property set
 
     Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,useraccountcontrol | fl
 
+Get all groups of a domain
+
+    Get-DomainGroup -Domain <domain_name>
+
+Get a specific group of a domain
+
+    Get-DomainGroup -Domain <domain_name> -Identity "<group_name>"
 
 Get users that belong to a specific group
 
     Get-DomainGroupMember -Identity "<domain_group_name>" -Recurse
+
+Get the SID of a domain
+
+    Get-DomainSID
 
 Get domain trust relationships
 
