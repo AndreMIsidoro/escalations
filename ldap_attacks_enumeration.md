@@ -29,25 +29,7 @@ Gives us the right to write to any non-protected attribute on an object. If we h
 
 This grants us full control over a target object. Again, depending on if this is granted over a user or group, we could modify group membership, force change a password, or perform a targeted Kerberoasting attack. If we have this access over a computer object and the Local Administrator Password Solution (LAPS) is in use in the environment, we can read the LAPS password and gain local admin access to the machine which may aid us in lateral movement or privilege escalation in the domain if we can obtain privileged controls or gain some sort of privileged access.
 
-### DS-Replication-Get-Changes-All - DCSync
 
-
-DCSync is a technique for stealing the Active Directory password database by using the built-in Directory Replication Service Remote Protocol, which is used by Domain Controllers to replicate domain data. This allows an attacker to mimic a Domain Controller to retrieve user NTLM password hashes. The crux of the attack is requesting a Domain Controller to replicate passwords via the DS-Replication-Get-Changes-All extended right. This is an extended access control right within AD, which allows for the replication of secret data.
-
-To perform this attack, you must have control over an account that has the rights to perform domain replication (a user with the Replicating Directory Changes and Replicating Directory Changes All permissions set). Domain/Enterprise Admins and default domain administrators have this right by default.
-
-    secretsdump.py -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>@<dc_ip>
-    secretsdump.py -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT/adunn@172.16.5.5
-
-    or with mimikatz
-
-    lsadump::dcsync /domain:INLANEFREIGHT.LOCAL /user:INLANEFREIGHT\administrator
-
-
-WriteOwner abused with Set-DomainObjectOwner
-WriteDACL abused with Add-DomainObjectACL
-AllExtendedRights abused with Set-DomainUserPassword or Add-DomainGroupMember
-Add Members abused with Add-DomainGroupMember
 
 ## ASREPRoasting
 
@@ -71,6 +53,28 @@ When performing user enumeration with Kerbrute, the tool will automatically retr
 Or use impacket Get-NPUsers.py
 
     GetNPUsers.py <domain_name>/ -dc-ip <domain_controller_ip> -no-pass -usersfile <domain_usernames_list>.txt
+
+
+### DS-Replication-Get-Changes-All - DCSync
+
+Active Directory uses replication to synchronize data (e.g., user account information, password hashes) across domain controllers. DCsync leverages this replication mechanism by imitating a legitimate domain controller to request and receive data such as password hashes. The goal is to extract sensitive data like: NTLM hashes, Kerberos tickets and Passwords of high-value accounts (e.g., Domain Admins or KRBTGT account).
+
+
+DCSync is a technique for stealing the Active Directory password database by using the built-in Directory Replication Service Remote Protocol, which is used by Domain Controllers to replicate domain data. This allows an attacker to mimic a Domain Controller to retrieve user NTLM password hashes. The crux of the attack is requesting a Domain Controller to replicate passwords via the DS-Replication-Get-Changes-All extended right. This is an extended access control right within AD, which allows for the replication of secret data.
+
+To perform this attack, you must have control over an account that has the rights to perform domain replication (a user with the Replicating Directory Changes and Replicating Directory Changes All permissions set). Domain/Enterprise Admins and default domain administrators have this right by default.
+
+    secretsdump.py -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>@<dc_ip>
+    secretsdump.py -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT/adunn@172.16.5.5
+
+    or with mimikatz
+
+    lsadump::dcsync /domain:INLANEFREIGHT.LOCAL /user:INLANEFREIGHT\administrator
+
+We can than use the extracted hashes in: Pass-the-Hash (PtH) attacks, Golden Ticket attacks (with the krbtgt hash) and Access sensitive systems using admin accounts.
+
+
+
 
 ## LLMNR/NBT-NS Poisoning
 
@@ -110,6 +114,8 @@ Using noPac to DCSync the Built-in Administrator Account
 ## Shadow Credentials
 
 
+
+Pass the hash attacks
 Active Directory Certificate Services (AD CS) attacks
 Kerberos Constrained Delegation
 Kerberos Unconstrained Delegation
@@ -118,3 +124,8 @@ Kerberos Resource-Based Constrained Delegation (RBCD)
 PrintNightmare
 
 PetitPotam (MS-EFSRPC)
+
+WriteOwner abused with Set-DomainObjectOwner
+WriteDACL abused with Add-DomainObjectACL
+AllExtendedRights abused with Set-DomainUserPassword or Add-DomainGroupMember
+Add Members abused with Add-DomainGroupMember
