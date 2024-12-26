@@ -72,6 +72,8 @@ Use group3r
 
    https://github.com/Andre92Marcos/tools/tree/master/group3r
 
+Use ADRecon
+
 Use the snaffler tool
 
    https://github.com/Andre92Marcos/tools/tree/master/snaffler
