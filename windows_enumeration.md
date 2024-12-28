@@ -100,6 +100,8 @@ Get process information by pid:
 	ipconfig /all	Prints out network adapter state and configurations
 	arp -a
 	route print
+	ipconfig /displaydns
+
 
 ## Powershell Enumeration
 
