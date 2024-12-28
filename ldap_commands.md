@@ -149,6 +149,11 @@ Get users that belong to a specific group
 
     Get-DomainGroupMember -Identity "<domain_group_name>" -Recurse
 
+Get users in groups that do not belong the domain
+
+    Get-DomainForeignGroupMember -Domain <domain_name>
+
+
 Get the SID of a domain
 
     Get-DomainSID
