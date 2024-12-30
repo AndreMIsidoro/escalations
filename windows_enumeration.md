@@ -223,6 +223,14 @@ Disable firewall:
 
 	netsh advfirewall set allprofiles state off
 
+When saving text files on windows and then processing them on linux, remember that windows saved the text files with utl-16le, therefore grep want find the strings we are looking for. Instead we can use ripgrep:
+
+	cat windows_text_file.txt |rg "string_to_find"
+
+or we can convert the text file to utf-8
+
+	cat windows_text_file.txt | iconv -f utf-16le -t utf-8 | grep "string_to_find"
+
 
 ## Payloads
 
