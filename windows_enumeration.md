@@ -219,6 +219,8 @@ Add backdoor account as admin user:
 
 	Confirm that it has been added: net locagroup administrators
 
+	This user can winrm, if it is enabled
+
 Disable firewall:
 
 	netsh advfirewall set allprofiles state off
