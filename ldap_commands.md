@@ -117,9 +117,18 @@ https://github.com/Andre92Marcos/tools/blob/master/powersploit/PowerView.md
 
 import-module .\Powerview.ps1
 
+
+Get all hosts (computer objects) of a domain:
+
+    Get-DomainComputer
+
 Shows domain password policy
 
     Get-DomainPolicy
+
+Get list of users of a domain
+
+    Get-DomainUser
 
 Get information about a domain user
 
@@ -162,6 +171,10 @@ Get domain trust relationships
 
     Get-DomainTrust
     Get-DomainTrustMapping
+
+Get list of users of a domain
+
+    Get-NetUser
 
 Test local admin access to remote machine
 
