@@ -176,6 +176,10 @@ Get list of users of a domain
 
     Get-NetUser
 
+Get ACL domain Permissions for a user
+
+    Get-ObjectAcl -SamAccountName "<sam_account_name>" -Verbose
+
 Test local admin access to remote machine
 
     Test-AdminAccess -ComputerName <computer/host_name>
