@@ -10,9 +10,12 @@ Check if windwos defender is active:
 
 ## App Locker
 
+
 Check App Locker Policy
 
     Get-AppLockerPolicy
+    Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
+	Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System31\cmd.exe -User Everyone 		Tests Applocker policy
 
 ## Powershell Constrainer Language Mode
 
