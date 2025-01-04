@@ -165,6 +165,10 @@ Then extract the hash for cracking
 
     Get-DomainUser -Identity sqldev | Get-DomainSPNTicket -Format Hashcat
 
+### Other Information
+
+    https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/t1208-kerberoasting
+
 ## LLMNR/NBT-NS Poisoning
 
 https://github.com/Andre92Marcos/vulnerabilities/blob/master/ldap/llmnr_ntbt-ns_poisoning.md
