@@ -7,6 +7,10 @@
 	https://www.cvedetails.com/
 	https://www.exploit-db.com/
 
+## If the webserver is using https check the certificate
+
+SSL/TLS certificates are another potentially valuable source of information if HTTPS is in use. Viewing the certificate reveals the details below, including the email address and company name. These could potentially be used to conduct a phishing attack if this is within the scope of an assessment.
+
 ## Scan for subdomains
 
 	Using ffuzz
