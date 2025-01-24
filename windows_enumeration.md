@@ -13,6 +13,7 @@
 
 	echo %USERNAME%		Print current user
 	whoami /priv		Displays current user privileges
+		https://github.com/Andre92Marcos/escalations/blob/master/ldap_attacks_enumeration.md#acl
 		Interesting Privileges:
 			SeDebugPrivilege
 			SeTakeOwnership
