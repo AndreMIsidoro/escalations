@@ -47,19 +47,24 @@ If we can make the target make a smb request back to us
    For example using sqlinjection, we can use responder to get hash and try to crack it
    https://github.com/Andre92Marcos/tools/tree/master/responder
 
+
+Try to do some ASREProasting
+
+   https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/ASREProasting.md
+
+If we are successful we can also try to do some Kerberoasting no preauthentication
+
+   https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/kerberoasting.md#kerberoast-no-pre-authentication
+
 Use bloodhound
 
    https://github.com/Andre92Marcos/tools/tree/master/bloodhound
 
+## When we have a domain username and a password
 
-Run impacket-GetNPUsers
+Try to do some Kerberoasting
 
-   https://github.com/Andre92Marcos/tools/blob/master/impacket/getNPUsers.md
-
-Run impacket-GetUsersSPNs
-
-   https://github.com/Andre92Marcos/tools/blob/master/impacket/getUserSPNs.md
-
+   https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/kerberoasting.md
 
 
 ## When we have a domain username, but no password, but we have a shell
@@ -86,9 +91,6 @@ Use bloodhound
 If our user have some special permissions run secretdump
 
    https://github.com/Andre92Marcos/tools/blob/master/impacket/secretdump.md
-
-
-
 
 If we are not finding anythin with bloodhound
 
