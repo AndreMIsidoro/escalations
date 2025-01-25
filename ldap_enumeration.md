@@ -102,6 +102,15 @@ If we are not finding anythin with bloodhound
 
    This might find relations that bloodhound missed
 
+## When we have a TGT and there is certificate authentication in the domain
+
+User certipy to find vulnerabilities (for example, after a shadow credentials attack)
+
+https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/shadow_credentials.md
+https://github.com/Andre92Marcos/tools/blob/master/certipy-ad/README.md#find
+
+
+
 ## When have a local Admin or domain Admin
 
 Use mimikatz tool. (Also if we have user with SeDebugPrivilege)
