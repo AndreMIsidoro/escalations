@@ -160,31 +160,7 @@ Use the extracted NTLM hash to create a Golden Ticket:
 
 
 
-## Kerberoasting
 
-Kerberoasting is a post-exploitation attack technique used to extract service account credentials in Active Directory (AD) environments. It targets the way Kerberos, the authentication protocol used in AD, handles service tickets for accounts configured to use Service Principal Names (SPNs).
-
-### How Kerberoasting Works
-
-Attackers authenticate to the domain using valid credentials (e.g., from phishing or another attack). They query the domain for accounts with SPNs, which are associated with services such as web servers, databases, or file servers. Kerberos allows any authenticated user to request a service ticket (TGS) for these accounts.
-
-The domain controller provides the requested service ticket, which is encrypted using the service account’s NTLM hash (a hash of the account's password). Attackers use tools (e.g., Rubeus, Impacket, or PowerShell scripts) to extract the encrypted service ticket from memory.
-
-The encrypted ticket is taken offline and subjected to password-cracking tools (e.g., Hashcat or John the Ripper) to recover the service account’s password. This is feasible because service accounts often have weak or easily crackable passwords and may not be subject to frequent rotation.
-
-### With PowerView
-
-First search for users with SPN property
-
-    Get-DomainUser -SPN -Properties samaccountname,ServicePrincipalName 
-
-Then extract the hash for cracking
-
-    Get-DomainUser -Identity sqldev | Get-DomainSPNTicket -Format Hashcat
-
-### Other Information
-
-    https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/t1208-kerberoasting
 
 ## LLMNR/NBT-NS Poisoning
 

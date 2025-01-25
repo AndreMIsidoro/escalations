@@ -1,4 +1,4 @@
-# shadow credentials
+# Shadow Credentials
 
 ## Overview
 
