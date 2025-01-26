@@ -7,11 +7,11 @@
 
 ## Scan ports
 	
-	sudo nmap -p- --min-rate=1000 <target_ip> > nmap.output
+	sudo nmap -p- --min-rate=1000 -oN nmap.output <target_ip>
 
 ## Run nmap scripts on open ports **
 
-	sudo nmap -p <open_ports> -sC -sV -vv -oN nmap.out <target_ip>
+	sudo nmap -p <open_ports> -sC -sV -vv -oN nmap_scripts.out <target_ip>
 
 	or we can do
 
