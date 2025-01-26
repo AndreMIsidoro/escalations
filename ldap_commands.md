@@ -51,6 +51,8 @@ Get list of computer on a domain
 
     net view /domain
 
+
+
 ## Living of the land - dsquery
 
 The dsquery DLL exists on all modern Windows systems by default now and can be found at C:\Windows\System32\dsquery.dll
@@ -75,7 +77,6 @@ Get list of computers
 View all objects in a OU
 
     dsquery * "CN=Users,DC=INLANEFREIGHT,DC=LOCAL"
-
 
 
 
@@ -179,6 +180,11 @@ Get list of users of a domain
 Get ACL domain Permissions for a user
 
     Get-ObjectAcl -SamAccountName "<sam_account_name>" -Verbose
+
+Find Interesting ACL relationships
+
+    Find-InterestingDomainAcl
+    Find-InterestingDomainAcl -ResolveGUIDS | ConvertTo-Json
 
 Test local admin access to remote machine
 
