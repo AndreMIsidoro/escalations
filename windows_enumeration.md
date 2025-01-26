@@ -9,6 +9,9 @@
 		get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg
 		get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg | select-string password
 
+	Use Snaffler to try to find credentials:
+		https://github.com/Andre92Marcos/tools/tree/master/snaffler
+
 ## Basic System Information
 
 	echo %USERNAME%		Print current user
