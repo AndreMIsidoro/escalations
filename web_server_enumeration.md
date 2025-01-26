@@ -18,12 +18,14 @@ SSL/TLS certificates are another potentially valuable source of information if H
 		if there are many false positives we can filter them out by number of words
 		ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -u http://<domain> -H "Host: FUZZ.<domain>" -fw <number_words_false_positives>
 
-### Use gobuster to brute force hidden pages
+### Scan for dirs and pages
 
-Using ffuf:
-
-	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-medium.txt
+```
 	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/dirb/wordlists/common.txt
+	ffuf -u http://<target_ip>/FUZZ -w <mywordlist> #https://github.com/AndreMIsidoro/tools/blob/master/wordlists/my_webserver_files.txt
+	feroxbuster --url http://<target_ip>
+	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-medium.txt
+```
 
 ### Crawl using sqlmap
 
