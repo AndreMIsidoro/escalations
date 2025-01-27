@@ -11,6 +11,9 @@
 
 	Use Snaffler to try to find credentials:
 		https://github.com/Andre92Marcos/tools/tree/master/snaffler
+	Use laZagne to try to find credentials:
+		https://github.com/AndreMIsidoro/tools/tree/master/laZagne
+
 
 ## Basic System Information
 
