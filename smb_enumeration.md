@@ -31,6 +31,17 @@ We can print all files of a share by doing:
 	netexec smb <target-ip> -u 'randomusername' -p 'randompassword'
 	netexec smb <target-ip> -u 'Guest' -p ''
 
+### Username and Password, but no session
+
+If we have a valid username and password, but still can find a session, we can try requesting a TGT and using it:
+
+```
+impacket-getTGT <domain>/<username>:<password>
+export KRB5CCNAME=<username>.ccache
+nxc smb <target.ip> -d <domain> -k --use-kcache
+```
+
+### Session Found
 
 If we found a session with netexec then do:
 
