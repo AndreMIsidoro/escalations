@@ -27,6 +27,10 @@ https://github.com/Andre92Marcos/tools/tree/master/ldapDomainDump
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md#ldap
 
+## When we get a new password do a kerbrute passwordspray
+
+https://github.com/AndreMIsidoro/tools/tree/master/kerbrute
+
 ## When we have access to target's network
 
 Start responder to try to do some poisoning
