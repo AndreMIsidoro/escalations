@@ -62,9 +62,14 @@ Use bloodhound
 
 ## When we have a domain username and a password
 
+We can request a TGT
+
+   https://github.com/AndreMIsidoro/tools/blob/master/impacket/getTGT.md
+
 Try to do some Kerberoasting
 
    https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/kerberoasting.md
+
 
 
 ## When we have a domain username, but no password, but we have a shell
