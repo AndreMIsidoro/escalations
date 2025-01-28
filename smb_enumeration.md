@@ -39,7 +39,7 @@ If we found a session with netexec then do:
 	--users
 	--groups
 	--sam (only local admin?)
-	--rit-brute
+	--rid-brute
 
 	--loggedon-users
 
