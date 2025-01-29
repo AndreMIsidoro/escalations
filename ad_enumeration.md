@@ -5,6 +5,13 @@
    https://github.com/Andre92Marcos/escalations/blob/master/active_directory_attacks_enumeration.md
    https://github.com/Andre92Marcos/escalations/blob/master/ldap_security_enumeration.md
 
+
+## For connections
+
+   winrm: evil-winrm
+   for smb: impacket-psexec
+   for wmi: impacket-wmiexec
+
 ## When we dont have anything
 
 ### Do simple enum of services (RPC,SMB)
