@@ -5,6 +5,10 @@
    https://github.com/Andre92Marcos/escalations/blob/master/active_directory_attacks_enumeration.md
    https://github.com/Andre92Marcos/escalations/blob/master/ldap_security_enumeration.md
 
+## Check for attacks
+
+petit-potam: https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/petitPotam.md
+
 
 ## For connections
 
