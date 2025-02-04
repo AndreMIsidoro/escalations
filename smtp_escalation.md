@@ -14,6 +14,9 @@ Grab banner
 
 	nmap -v -p <smtp_port> --script smtp-enum-users <target_ip>
 
+	smtp-user-enum -M VRFY -U <file_with_usernames>.txt -t <target-ip>
+
+
 
 ## General Enum
 
