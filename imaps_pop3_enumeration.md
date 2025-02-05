@@ -24,3 +24,11 @@ Over tls
 ```
 openssl s_client -connect <target_ip>:pop3s
 ```
+
+## evolution
+
+If we want to read mails over imaps and pop3 is faster to just use a client like evolution:
+
+```
+sudo apt install evolution
+```
