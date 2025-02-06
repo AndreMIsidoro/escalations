@@ -1,9 +1,17 @@
 # MySQL Enumeration
 
-## 1st) Try to connect with user root
+## Connection
+
+```
+mysql --skip-ssl -h <target_ip> -u<username> -p<password>
+```
+
+## Try to connect with user root
 
 	mysql -h <target_ip> -u root
 	(it doesnt require a password)
+
+
 
 ## More info
 
