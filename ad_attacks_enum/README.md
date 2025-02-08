@@ -37,7 +37,6 @@ Kerberos Resource-Based Constrained Delegation (RBCD)
 Kerberos: Silver Tickets
 
 
-WriteOwner abused with Set-DomainObjectOwner
 WriteDACL abused with Add-DomainObjectACL
 AllExtendedRights abused with Set-DomainUserPassword or Add-DomainGroupMember
 Add Members abused with Add-DomainGroupMember

