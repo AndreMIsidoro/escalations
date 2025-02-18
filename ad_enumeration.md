@@ -1,4 +1,4 @@
-# ldap - Enumeration
+# Active Directory - Enumeration
 
 ## Keep in mind
 
