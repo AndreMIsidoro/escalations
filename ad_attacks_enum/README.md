@@ -27,6 +27,22 @@ https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/print_n
 
 ## Local Privilege Escalation
 
+### Juicy Potato
+
+Affected Versions
+
+- Windows 7 (particularly versions with User Account Control (UAC) disabled or misconfigured services).
+- Windows 8.1 / 10 / Server 2016/2019 with COM permissions that allow low-privilege users to elevate privileges.
+- Windows Server 2008 R2 to Windows Server 2019 (often in environments where COM service permissions or unquoted paths are mishandled).
+
+Check if is vulnerable:
+
+```powershell
+whoami /priv | Select-String -Pattern "SeImpersonatePrivilege|SeAssignPrimaryTokenPrivilege"
+```
+
+https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/juicy_potato.md
+
 ### PrintNightmare
 
 Affected versions
