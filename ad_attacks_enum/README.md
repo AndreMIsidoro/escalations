@@ -58,7 +58,7 @@ Affected versions
 - Windows 10 (All versions before July 2021 updates)
 - Windows 11 (Early versions, before patches applied)
 
-Check if system in vulnerable:
+Check if system is vulnerable:
 
 ```powershell
 #if the kbs (knowledge base) are not found, the system might be vulnerable
@@ -66,3 +66,14 @@ wmic qfe list brief | findstr /I "5004945 5004946 5004237 5004238 5005033 500503
 ```
 https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/print_nightmare.md
 
+
+### PrintSpoofer
+
+Check If system is vulnerable:
+
+```powershell
+# check if the print spooler service is running
+Get-Service -Name Spooler
+#check if the system has been patched
+wmic qfe list brief | findstr "KB5004945 KB5004953 KB5005033"
+```
