@@ -25,3 +25,7 @@ It uses these vulnerabilities to inject code into a process running with SYSTEM 
 ## Execution
 
 https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/juicypotato.html#examples
+
+Automated
+
+https://github.com/TsukiCTF/Lovely-Potato
