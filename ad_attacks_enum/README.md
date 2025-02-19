@@ -91,3 +91,5 @@ Check if is vulnerable:
 whoami /priv | Select-String -Pattern "SeImpersonatePrivilege|SeAssignPrimaryTokenPrivilege"
 ```
 
+https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/rogue_potato.md
+
