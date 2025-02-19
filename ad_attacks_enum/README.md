@@ -27,6 +27,20 @@ https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/print_n
 
 ## Local Privilege Escalation
 
+### Abusing Privileges
+
+- SeImpersonatePrivilege
+- SeAssignPrimaryPrivilege
+- SeTcbPrivilege
+- SeBackupPrivilege
+- SeRestorePrivilege
+- SeCreateTokenPrivilege
+- SeLoadDriverPrivilege
+- SeTakeOwnershipPrivilege
+- SeDebugPrivilege
+
+https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/abusing_privileges.md
+
 ### Juicy Potato
 
 Affected Versions
