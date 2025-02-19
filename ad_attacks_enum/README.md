@@ -77,3 +77,17 @@ Get-Service -Name Spooler
 #check if the system has been patched
 wmic qfe list brief | findstr "KB5004945 KB5004953 KB5005033"
 ```
+
+### Rogue Potato
+
+Affected Versions
+
+- Windows 10 1809 and later
+- Windows Server 2019 and late
+
+Check if is vulnerable:
+
+```powershell
+whoami /priv | Select-String -Pattern "SeImpersonatePrivilege|SeAssignPrimaryTokenPrivilege"
+```
+
