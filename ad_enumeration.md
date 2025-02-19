@@ -99,6 +99,8 @@ Use group3r
 
 Use ADRecon
 
+   https://github.com/AndreMIsidoro/tools/tree/master/adrecon
+
 Use the snaffler tool
 
    https://github.com/Andre92Marcos/tools/tree/master/snaffler
