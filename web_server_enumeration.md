@@ -26,12 +26,14 @@ Do some initial fingerprinting:
 Try to send a link to see if it clicks
 Try to send a <script></script> xss
 
-## Scan for subdomains
+## Scan for vhosts
 
 	Using ffuzz
 		ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -u http://<domain> -H "Host: FUZZ.<domain>"
 		if there are many false positives we can filter them out by number of words
 		ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -u http://<domain> -H "Host: FUZZ.<domain>" -fw <number_words_false_positives>
+	If we found a vhost we can check for more subdomains if we really aren't finding anything:
+		ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -u http://[vhost].[domain] -H "Host: FUZZ.[vhost].[domain]>" -fw <number_words_false_positives>
 
 ### Scan for dirs and pages
 
