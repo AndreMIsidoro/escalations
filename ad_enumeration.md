@@ -12,9 +12,9 @@ petit-potam: https://github.com/AndreMIsidoro/escalations/blob/master/ad_attacks
 
 ## For connections
 
-   winrm: evil-winrm
-   for smb: impacket-psexec
-   for wmi: impacket-wmiexec
+winrm: evil-winrm
+with smb: impacket-psexec
+with wmi: impacket-wmiexec
 
 ## When we dont have anything
 
