@@ -11,7 +11,7 @@
 
 SSL/TLS certificates are another potentially valuable source of information if HTTPS is in use. Viewing the certificate reveals the details below, including the email address and company name. These could potentially be used to conduct a phishing attack if this is within the scope of an assessment.
 
-## Initail enum
+## Initial enum
 
 Check for wep application firewalls
 
@@ -20,6 +20,10 @@ Check for wep application firewalls
 Do some initial fingerprinting:
 
 	nikto -h inlanefreight.com -Tuning b
+
+## Search for default credentials
+
+https://github.com/AndreMIsidoro/tools/tree/master/default_credentials
 
 ## If there seems to be some data that is sent for an admin to verify
 
