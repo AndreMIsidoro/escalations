@@ -153,3 +153,8 @@ To figure out the difference in time with the kerberos server:
 To simulate the difference in time when executing a command:
 
    faketime -f '+7h' <command>
+
+
+## More Information
+
+https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet
