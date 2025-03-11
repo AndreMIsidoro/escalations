@@ -57,6 +57,12 @@ An invalid username returns that the user was not found. So we can do user enume
 sudo wpscan -e ap -t 500 --url http://ir.inlanefreight.loca
 ```
 
+To enumerate users:
+
+```shell
+wpscan -e u -t 500 --url http://ir.inlanefreight.local
+```
+
 ```shell
 sudo wpscan --url http://blog.inlanefreight.local --enumerate --api-token dEOFB<SNIP>
 ```
