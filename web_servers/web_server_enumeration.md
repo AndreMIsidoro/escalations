@@ -42,7 +42,7 @@ Try to send a <script></script> xss
 ### Scan for dirs and pages
 
 ```
-	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/dirb/wordlists/common.txt
+	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/dirb/wordlists/common.txt -e .php,.html
 	ffuf -u http://<target_ip>/FUZZ -w <mywordlist> #https://github.com/AndreMIsidoro/tools/blob/master/wordlists/my_webserver_files.txt
 	feroxbuster --url http://<target_ip>
 	ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list.2.3-medium.txt
