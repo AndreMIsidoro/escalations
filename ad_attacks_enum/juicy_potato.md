@@ -26,6 +26,12 @@ It uses these vulnerabilities to inject code into a process running with SYSTEM 
 
 https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/juicypotato.html#examples
 
-Automated
+## Automated
 
 https://github.com/TsukiCTF/Lovely-Potato
+
+## Try GodPotato
+
+Try godpotato for a newer and more automated version:
+
+https://github.com/BeichenDream/GodPotato

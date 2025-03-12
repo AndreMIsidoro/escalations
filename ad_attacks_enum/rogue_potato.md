@@ -29,6 +29,12 @@ If Juicy Potato fails due to patches (Windows 10 1809+, Server 2019) use Rogue P
 
 - Low-privileged user access to the system (standard user account) with the priviledges SeImpersonatePrivilege or SeAssignPrimaryTokenPrivilege.
 
+## Try GodPotato
+
+Try godpotato for a newer and more automated version:
+
+https://github.com/BeichenDream/GodPotato
+
 ## Other Inforamtion
 
 https://github.com/antonioCoco/RoguePotato
