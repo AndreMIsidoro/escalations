@@ -85,6 +85,10 @@ Try to do some Kerberoasting
 
    https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/kerberoasting.md
 
+Use netexec smb and ldap
+
+https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md
+
 Try to look for Group Policy Preferences (GPP) store plaintext or AES-encrypted credentials for AutoLogon in Active Directory environments:
 
 ```shell
