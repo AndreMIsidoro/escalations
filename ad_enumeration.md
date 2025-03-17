@@ -89,6 +89,12 @@ Use netexec smb and ldap
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md
 
+Use impacket to search for more users
+
+```shell
+impacket-GetADUsers -all <domain>/<controlled_user> -dc-ip 10.129.40.252
+```
+
 Try to look for Group Policy Preferences (GPP) store plaintext or AES-encrypted credentials for AutoLogon in Active Directory environments:
 
 ```shell
