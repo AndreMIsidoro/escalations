@@ -80,14 +80,18 @@ Use bloodhound
 We can request a TGT
 
    https://github.com/AndreMIsidoro/tools/blob/master/impacket/getTGT.md
+   or
+   netexec ldap frizz.htb -u usernames.txt -p passwords.txt --continue-on-success --kerberos
 
 Try to do some Kerberoasting
 
    https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/kerberoasting.md
 
-Use netexec smb and ldap
+### Use netexec smb and ldap
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md
+
+
 
 Use impacket to search for more users
 
@@ -207,6 +211,12 @@ To figure out the difference in time with the kerberos server:
 To simulate the difference in time when executing a command:
 
    faketime -f '+7h' <command>
+
+We can also try:
+
+```shell
+faketime "$(ntpdate -q frizz.htb | awk '{print $1" "$2}')" zsh
+```
 
 
 ## More Information
