@@ -91,3 +91,9 @@ Then do
 ```shell
 curl http://blog.inlanefreight.local/wp-content/themes/twentynineteen/404.php?0=id
 ```
+
+## Ohter Information
+
+Check worpress vulnerabilities in:
+
+https://wpscan.com
