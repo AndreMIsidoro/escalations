@@ -4,6 +4,10 @@
 
 ```shell
 nslookup http://<target_ip>
+dig @<dns_server_ip> -x <ip_to_dns_reverse_lookup>
+#example
+dig @10.129.227.180 -x 10.129.227.180
+
 dig soa <domain>
 dig soa www.inlanefreight.com
 dig ns <domain> @<target_dns_server_ip>
