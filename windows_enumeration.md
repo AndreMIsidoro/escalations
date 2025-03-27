@@ -12,10 +12,11 @@ Look at the configs of the other apps running: ftp, mails, etc
 
 Search users home with:
 
-- get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg
-- get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg | select-string password
+```powershell
+get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg
+get-childitem -recurse -force -include *.txt,*.ini,*.xml,*,json,*.cfg | select-string password
+```
 
-	
 Try to find credentials with snaffler and laZagne
 
 - https://github.com/Andre92Marcos/tools/tree/master/snaffler
