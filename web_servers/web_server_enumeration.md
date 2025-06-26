@@ -21,6 +21,12 @@ Do some initial fingerprinting:
 
 	nikto -h inlanefreight.com -Tuning b
 
+Do a vulnerability scan:
+
+```shell
+nuclei -u http://furni.htb
+```
+
 ## Search for default credentials
 
 https://github.com/AndreMIsidoro/tools/tree/master/default_credentials
