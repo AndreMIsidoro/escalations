@@ -57,6 +57,14 @@ bloodyAD --host <dc_controller_name> -d "domain_name" --dc-ip <domain_controller
 
 We can also use bloodyAD to change a target user's password.
 
+### ReadGMSAPassword
+
+It is possible to remotely retrieve the password for the GMSA and convert that password to its equivalent NT hash.gMSADumper.py can be used for that purpose.
+
+```shell
+gMSADumper.py -u 'user' -p 'password' -d 'domain.local'
+```
+
 ### WriteDacl
 
 This abuse can be carried out when controlling an object that has WriteDacl over another object.
