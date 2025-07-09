@@ -17,6 +17,10 @@ bloodyAD --host 10.129.186.179 -d 'tombwatcher.htb' -u 'alfred' -p 'basketball' 
 
 Gives us the right to reset a user's password without first knowing their password (should be used cautiously and typically best to consult our client before resetting passwords).
 
+```shell
+bloodyAD --host [host_ip] -d [domain_name] -u '[user_name]' -p '[user_password]' set password '[target_user_name]' '[new_password]'
+```
+
 ### GenericWrite
 
     Abused with Set-DomainObject
