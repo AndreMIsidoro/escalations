@@ -87,6 +87,12 @@ Try to do some Kerberoasting
 
    https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/kerberoasting.md
 
+Check for deleted objects:
+
+```powershell
+ Get-ADObject -Filter * -IncludeDeletedObjects -SearchBase "CN=Deleted Objects,DC=tombwatcher,DC=htb" -Properties *
+ ```
+
 ### Use netexec smb and ldap
 
 https://github.com/Andre92Marcos/tools/blob/master/netexec/README.md
