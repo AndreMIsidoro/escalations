@@ -174,6 +174,33 @@ Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $si
 Get-PathAcl -Path "\\Path\Of\A\Share"
 ```
 
+## Tips
+
+### Restore deleted users
+
+Confirm that the recycle bin feature is enabled:
+```powershell
+Get-ADOptionalFeature -Filter 'Name -like "*Recycle Bin*"'
+```
+
+Check if the account is indeed deleted:
+
+```powershell
+Get-ADObject -Filter * -IncludeDeletedObjects -SearchBase "CN=Deleted Objects,DC=voleur,DC=htb" -Properties *
+```
+
+Grap the deleted account distinguished name and restore it (usually contains 0ADEL):
+
+```powershell
+Restore-ADObject -Identity "CN=Todd Wolfe\0ADEL:1c6b1deb-c372-4cbb-87b1-15031de169db,CN=Deleted Objects,DC=voleur,DC=htb"
+```
+
+Confirm restoration:
+
+```powershell
+Get-ADUser Todd.Wolfe| Select DistinguishedName
+```
+
 ## Other Information
 
 https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet
