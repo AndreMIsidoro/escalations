@@ -165,6 +165,18 @@ User certipy to find vulnerabilities (for example, after a shadow credentials at
 https://github.com/Andre92Marcos/escalations/blob/master/ad_attacks_enum/shadow_credentials.md
 https://github.com/Andre92Marcos/tools/blob/master/certipy-ad/README.md#find
 
+## Search for DPAPI credentials when we have access to file system with an user:
+
+Usually located on:
+
+
+[user]/AppData/Roaming/Microsoft/Protect/S-1-5-21-3927696377-1337352550-2781715495-1110/08949382-134f-4c63-b93c-ce52efc0aa88
+
+and
+
+[user]/AppData/Roaming/Microsoft/Credentials/772275FAD58525253490A9B0039791D3
+
+we can the use the tool impacket-dpapi to decrypt.
 
 
 ## When have a local Admin or domain Admin
