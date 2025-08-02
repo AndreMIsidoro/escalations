@@ -170,6 +170,7 @@ Check if Windows version has any known vulnerability (also check the patches app
 
 	reg query HKLM /f password /t REG_SZ /s
 	reg query HKCU /f password /t REG_SZ /s
+	reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 
 ## Check communication through processess using pipes
 
